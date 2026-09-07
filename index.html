@@ -42,7 +42,7 @@
   .deco { position: absolute; pointer-events: none; z-index: 5; opacity: 0.95; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); }
   .deco-tl { top: 0; left: -90px; rotate: 180deg; width: 25vw; min-width: 150px; max-width: 300px; }
   .deco-br { bottom: 0; right: -90px; width: 35vw; min-width: 200px; max-width: 400px; }
-  .global-logo-bottom { position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%); z-index: 30; pointer-events: none; display: flex; justify-content: center; align-items: center; }
+  .global-logo-bottom { position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%); z-index: 6; pointer-events: none; display: flex; justify-content: center; align-items: center; }
   .global-logo-bottom img { height: 300px; width: auto; object-fit: contain; }
 
   /* ─── NOVOS ATIVOS DECORATIVOS E ANIMAÇÕES ─── */
@@ -128,7 +128,8 @@
   #home .home-logo span { font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 2px; }
   
   /* Logotipo no Resultado (PC) */
-  #result .home-logo { margin-top: 50px; margin-bottom: -10px; width: 130px; height: 130px; border: 4px solid rgba(255,255,255,0.9); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; animation: logoFloat 3s ease-in-out infinite; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); box-shadow: 0 0 0 8px rgba(255,255,255,0.15); }
+  #result .home-logo, #resultAcim .home-logo { margin-top: 50px; margin-bottom: -10px; width: 130px; height: 130px; border: 4px solid rgba(255,255,255,0.9); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; animation: logoFloat 3s ease-in-out infinite; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); box-shadow: 0 0 0 8px rgba(255,255,255,0.15); overflow: hidden; }
+  #result .home-logo img, #resultAcim .home-logo img { max-width: 100%; }
   
   @keyframes logoFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-30px); } }
   @keyframes logoFloatQuiz { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -163,6 +164,42 @@
   @keyframes confettiFall { 0% { transform: translateX(0) rotate(0deg); opacity: 1; } 100% { transform: translateX(var(--dx)) translateY(110vh) rotate(720deg); opacity: 0; } }
 
   /* ═══════════════════════════════════════════════════
+     ABAS DA HOME (SELEÇÃO DE QUIZ) + TEMA CONNECT ACIM
+  ═══════════════════════════════════════════════════ */
+  .home-tabs { display: flex; gap: 10px; margin-bottom: 26px; background: rgba(255,255,255,0.12); padding: 6px; border-radius: 50px; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.25); }
+  .home-tab { border: none; background: transparent; color: rgba(255,255,255,0.75); font-weight: 800; font-size: 15px; padding: 12px 26px; border-radius: 40px; cursor: pointer; transition: all 0.25s; letter-spacing: 0.5px; white-space: nowrap; }
+  .home-tab:hover { color: #fff; }
+  .home-tab.active { background: #fff; color: #1565A0; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+  #tabBtnAcim.active { color: #0F9B7E; }
+  .home-tab-panel { display: none; flex-direction: column; align-items: center; }
+  .home-tab-panel.active { display: flex; animation: fadeInPanel 0.35s ease; }
+  @keyframes fadeInPanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .home-btn.acim-btn { background: #0F9B7E; color: #fff; }
+  .blink-prize-acim { color: #5CFFB0; text-shadow: 0 0 10px rgba(92,255,176,0.5); }
+  .cpf-input-acim { border-color: #22D3A5; }
+  .cpf-input-acim:focus { background: rgba(255,255,255,0.25); box-shadow: 0 0 15px rgba(34,211,165,0.4); }
+  #progressFillAcim { background: #22D3A5; }
+  .logo-circle.logo-acim span, .home-logo-acim span { color: #DFFFF4; }
+
+  /* O quiz Connect ACIM mostra explicação também nas perguntas de múltipla
+     escolha (não só nas de V/F), então o botão "Próxima" deixa de ser fixo
+     no rodapé e passa a acompanhar o conteúdo, evitando sobreposição. */
+  .nav-row-inline { position: static; transform: none; margin-top: 18px; margin-bottom: 24px; display: flex; justify-content: center; flex-shrink: 0; }
+  .explanation-acim { font-size: 15px; padding: 10px 18px; max-width: 780px; margin-top: 12px; }
+
+  /* Rede de segurança: se a pergunta + explicação forem mais altas que a tela
+     (textos longos em telas baixas), a tela do quiz Connect ACIM rola em vez
+     de cortar ou esconder o botão "Próxima Pergunta". Continua centralizado
+     verticalmente (igual ao design original) enquanto o conteúdo couber;
+     só muda para alinhado no topo + rolagem quando realmente não cabe
+     (classe "quiz-tall", aplicada via JS depois de cada renderização). */
+  #quizAcim { overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; padding-bottom: 24px; }
+  #quizAcim.quiz-tall.screen { justify-content: flex-start; padding-top: 110px; }
+  .progress-bar { pointer-events: none; }
+  #quizAcim .progress-bar { z-index: -1; }
+
+  /* ═══════════════════════════════════════════════════
      RESPONSIVIDADE (MOBILE & TABLETS) - APENAS EXCEÇÕES
   ═══════════════════════════════════════════════════ */
   @media (max-width: 768px) {
@@ -173,10 +210,10 @@
       padding: 8px 16px; 
       font-size: 12px; 
     }
-    #login .home-content { 
+    #login .home-content, #loginAcim .home-content {
       padding-top: 80px; /* Empurra o conteúdo para baixo do botão voltar */
     }
-    #login h2 { 
+    #login h2, #loginAcim h2 {
       font-size: 32px !important; /* Diminui um pouco o título gigante */
     }
     /* Libera a rolagem apenas dentro das caixas principais no celular se for muito pequeno */
@@ -188,11 +225,11 @@
     #home .home-logo span { font-size: 10px; margin-top: -10px !important; }
     
     /* Resultado Mobile: Logotipo e Texto */
-    #result .home-logo { width: 90px !important; height: 90px !important; margin-top: 50px !important; margin-bottom: 5px !important; }
-    #result .home-logo img { width: 140px !important; margin-top: 0 !important; }
-    #resultTitle { font-size: 38px !important; margin-bottom: 5px !important; }
-    #resultMsg { font-size: 16px !important; padding: 15px !important; width: 95%; margin-bottom: 15px !important; line-height: 1.4; }
-    #resultAction .home-btn { font-size: 16px !important; padding: 12px 25px !important; }
+    #result .home-logo, #resultAcim .home-logo { width: 90px !important; height: 90px !important; margin-top: 50px !important; margin-bottom: 5px !important; }
+    #result .home-logo img, #resultAcim .home-logo img { width: 140px !important; margin-top: 0 !important; }
+    #resultTitle, #resultTitleAcim { font-size: 38px !important; margin-bottom: 5px !important; }
+    #resultMsg, #resultMsgAcim { font-size: 16px !important; padding: 15px !important; width: 95%; margin-bottom: 15px !important; line-height: 1.4; }
+    #resultAction .home-btn, #resultActionAcim .home-btn { font-size: 16px !important; padding: 12px 25px !important; }
 
     /* Logo no Canto Superior Direito (Quiz) */
     .logo-area { top: 15px; right: 15px; }
@@ -209,6 +246,10 @@
     .home-btns { flex-direction: column; width: 90%; max-width: 300px; }
     .home-btn { padding: 15px 30px; font-size: 16px; width: 100%; justify-content: center; }
 
+    /* Abas da Home */
+    .home-tabs { flex-wrap: wrap; justify-content: center; width: 92%; max-width: 340px; }
+    .home-tab { font-size: 12px; padding: 10px 16px; flex: 1; }
+
     /* Login */
     .cpf-input { font-size: 22px; padding: 12px 20px; }
     .login-error-box { padding: 12px 15px; }
@@ -220,6 +261,7 @@
     .question-box { margin-top: 60px; padding: 20px 15px; font-size: 18px; width: 92%; margin-bottom: 15px; }
     .answers-box { padding: 15px; width: 92%; }
     .answer-item { font-size: 14px; padding: 12px 15px; }
+    #quizAcim.quiz-tall { padding-top: 70px; }
     
     /* Verdadeiro/Falso empilhados */
     .tf-row { flex-direction: column; gap: 15px; width: 92%; }
@@ -244,7 +286,7 @@
   /* Prevenção de quebra com teclado virtual aberto no telemóvel */
   @media (max-height: 650px) {
     .home-content { padding-top: 10px; }
-    #home .home-logo, #result .home-logo, .logo-area, .quiz-title { display: none; }
+    #home .home-logo, #result .home-logo, #resultAcim .home-logo, .logo-area, .quiz-title { display: none; }
     .question-box { margin-top: 20px; padding: 15px; }
     .answers-box { padding: 10px; }
     .nav-row { bottom: 15px; }
@@ -277,17 +319,42 @@
 
   <div class="screen active" id="home">
     <div class="home-content">
-      <div class="home-logo" title="RIC Ambiental">
-        <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
-        <span style="margin-top: -20px;">RIC AMBIENTAL</span>
-      </div>
-      <h1 class="main-title">Quiz do<br>Saneamento</h1>
-      <p class="home-subtitle">🌊 Teste seus conhecimentos sobre água e saneamento!</p>
 
-      <p class="blink-prize">✨ Participe e concorra a prêmios exclusivos! ✨</p>
-      <div class="home-btns">
-        <button class="home-btn quiz-btn" onclick="goTo('login')">🎯 Iniciar Quiz</button>
+      <div class="home-tabs" role="tablist" aria-label="Selecione o quiz">
+        <button class="home-tab active" id="tabBtnRic" role="tab" aria-selected="true" onclick="selectHomeTab('ric')">🎯 Quiz RIC Ambiental</button>
+        <button class="home-tab" id="tabBtnAcim" role="tab" aria-selected="false" onclick="selectHomeTab('acim')">💧 Quiz Connect ACIM</button>
       </div>
+
+      <!-- ── PAINEL: QUIZ RIC AMBIENTAL (com Roleta) ── -->
+      <div class="home-tab-panel active" id="panelRic">
+        <div class="home-logo" title="RIC Ambiental">
+          <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
+          <span style="margin-top: -20px;">RIC AMBIENTAL</span>
+        </div>
+        <h1 class="main-title">Quiz do<br>Saneamento</h1>
+        <p class="home-subtitle">🌊 Teste seus conhecimentos sobre água e saneamento!</p>
+
+        <p class="blink-prize">✨ Participe e concorra a prêmios exclusivos! ✨</p>
+        <div class="home-btns">
+          <button class="home-btn quiz-btn" onclick="goTo('login')">🎯 Iniciar Quiz</button>
+        </div>
+      </div>
+
+      <!-- ── PAINEL: QUIZ SANEAMENTO CONNECT ACIM (sem Roleta) ── -->
+      <div class="home-tab-panel" id="panelAcim">
+        <div class="home-logo home-logo-acim" title="Saneamento Connect ACIM">
+          <img src="Ricambiental_logo-25.png" alt="Logo Saneamento Connect ACIM" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
+          <span style="margin-top: -20px;">CONNECT ACIM</span>
+        </div>
+        <h1 class="main-title">Quiz Saneamento<br>Connect ACIM</h1>
+        <p class="home-subtitle">💧 Teste seus conhecimentos sobre saneamento básico!</p>
+
+        <p class="blink-prize blink-prize-acim">🎁 Participe e ganhe um brinde especial! 🎁</p>
+        <div class="home-btns">
+          <button class="home-btn acim-btn" onclick="goTo('loginAcim')">💧 Iniciar Quiz</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -374,6 +441,76 @@
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════
+       TELAS DO SEGUNDO QUIZ – SANEAMENTO CONNECT ACIM
+       (mesma mecânica de CPF/1 tentativa por dia, SEM roleta)
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="screen" id="loginAcim">
+    <button class="back-btn" onclick="goToHome('acim')">← Voltar</button>
+    <div class="home-content">
+      <h2 style="color:#fff; font-size: 38px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin-bottom: 5px;">Identificação</h2>
+      <p style="color:rgba(255,255,255,0.9); font-size: 18px; text-align:center; max-width:450px; margin-bottom: 25px;">
+        Para jogar e concorrer a um brinde, digite seu CPF.<br><b>Regra: Apenas 1 tentativa por dia!</b>
+      </p>
+
+      <input type="password" id="cpfInputAcim" class="cpf-input cpf-input-acim" placeholder="***.***.***-**" maxlength="14" oninput="maskCPF(this)" autocomplete="off" inputmode="numeric" pattern="[0-9]*">
+
+      <button class="home-btn acim-btn" onclick="validateAndStartAcim()">Começar o Quiz →</button>
+      <div id="loginErrorAcim" class="login-error-box"></div>
+    </div>
+  </div>
+
+  <div class="screen" id="quizAcim">
+    <div class="q-badge" id="qBadgeAcim">Pergunta 1 / 3</div>
+
+    <div class="logo-area">
+      <div class="logo-circle logo-acim">
+        <img src="Ricambiental_logo-25.png" alt="Logo Saneamento Connect ACIM" style="width: 180px; height: auto; object-fit: contain; margin-top: 5px;">
+        <span style="margin-top: -12px;">CONNECT ACIM</span>
+      </div>
+    </div>
+
+    <div class="quiz-title" id="quizTitleAcim">Quiz Connect ACIM</div>
+
+    <div class="question-box" id="questionBoxAcim"></div>
+
+    <div class="answers-box" id="answersBoxAcim" style="display:none">
+      <div class="answer-item" id="ansA2" onclick="selectAnswerAcim(0)"></div>
+      <div class="answer-item" id="ansB2" onclick="selectAnswerAcim(1)"></div>
+      <div class="answer-item" id="ansC2" onclick="selectAnswerAcim(2)"></div>
+      <div class="answer-item" id="ansD2" onclick="selectAnswerAcim(3)"></div>
+    </div>
+
+    <div class="tf-row" id="tfRowAcim" style="display:none">
+      <button class="tf-btn verdadeiro" id="btnVerdadeiroAcim" onclick="selectTFAcim('V')">
+        <div class="tf-icon">✔</div> VERDADEIRO
+      </button>
+      <button class="tf-btn falso" id="btnFalsoAcim" onclick="selectTFAcim('F')">
+        <div class="tf-icon">✖</div> FALSO
+      </button>
+    </div>
+
+    <div class="explanation explanation-acim" id="explanationAcim"></div>
+
+    <div class="nav-row nav-row-inline">
+      <button class="nav-btn hidden" id="nextBtnAcim" onclick="nextQAcim()">Próxima Pergunta →</button>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progressFillAcim"></div></div>
+  </div>
+
+  <div class="screen" id="resultAcim">
+    <div class="home-content">
+      <div class="home-logo" style="width: 130px; height: 130px; margin-bottom: -10px;">
+        <img src="Ricambiental_logo-25.png" alt="Logo" style="width: 250px; margin-top: 5px;">
+      </div>
+      <h1 class="main-title" id="resultTitleAcim" style="font-size: 55px;">Fim de Jogo!</h1>
+      <p id="resultMsgAcim" style="color:#fff; font-size: 24px; font-weight: 700; text-align:center; max-width: 600px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px);"></p>
+      <div id="resultActionAcim" class="home-btns"></div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -409,6 +546,38 @@ const dbQuestions = [
 ];
 
 /* ═══════════════════════════════════════════════════
+   BANCO DE QUESTÕES – QUIZ SANEAMENTO CONNECT ACIM
+   (segunda aba, sem roleta)
+═══════════════════════════════════════════════════ */
+const dbQuestionsAcim = [
+  { type: 'tf', q: 'Verdadeiro ou falso: A água que chega às torneiras de uma cidade passa apenas por uma etapa de TRATAMENTO antes de ser distribuída à população.', ans: 'F', explanation: 'A água passa por diferentes etapas de tratamento (mais de uma) para que atenda aos padrões de qualidade antes de chegar ao consumidor. Entre elas: filtragem, floculação, decantação, cloração.' },
+  { type: 'mc', q: 'Qual é a principal função de uma estação de tratamento de esgoto (ETE)?', opts: ['Tornar o esgoto potável','Remover contaminantes antes do lançamento no meio ambiente','Armazenar água para períodos de estiagem','Aumentar a pressão da rede de água'], ans: 1, explanation: 'A ETE trata o esgoto para remover poluentes e agentes patológicos, reduzindo seus impactos antes que o efluente tratado seja devolvido ao meio ambiente.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Jogar óleo de cozinha usado na pia pode contribuir para entupimentos e prejudicar o sistema de esgotamento sanitário.', ans: 'V', explanation: 'O óleo pode aderir às paredes das tubulações, favorecendo obstruções e dificultando o funcionamento do sistema de esgoto.' },
+  { type: 'mc', q: 'Qual destas atividades normalmente consome mais água em uma residência?', opts: ['Escovar os dentes com a torneira aberta','Lavar as mãos','Tomar um banho demorado','Encher um copo de água'], ans: 2, explanation: 'O tempo de uso é um dos fatores que mais influenciam o consumo. Banhos prolongados podem representar um consumo significativo de água.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A água subterrânea é uma importante fonte de abastecimento de diversas cidades brasileiras.', ans: 'V', explanation: 'Os aquíferos armazenam grandes volumes de água subterrânea e são utilizados como fonte de abastecimento em diversas regiões.' },
+  { type: 'mc', q: 'O que é uma adutora no sistema de abastecimento de água?', opts: ['Equipamento que mede o consumo do imóvel','Tubulação utilizada para transportar grandes volumes de água','Reservatório doméstico','Sistema de filtragem residencial'], ans: 1, explanation: 'Adutoras são tubulações de grande importância para transportar água entre diferentes pontos do sistema de abastecimento.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: O saneamento básico envolve apenas o abastecimento de água e o tratamento de esgoto.', ans: 'F', explanation: 'O saneamento básico também contempla limpeza urbana e manejo de resíduos sólidos, além de drenagem e manejo das águas pluviais urbanas.' },
+  { type: 'mc', q: 'Por que os reservatórios de água são importantes para uma cidade?', opts: ['Apenas para armazenar água da chuva','Para manter uma reserva e ajudar a regular a distribuição de água','Para substituir as estações de tratamento','Para eliminar a necessidade de redes de distribuição'], ans: 1, explanation: 'Os reservatórios ajudam a equilibrar a oferta e a demanda, mantendo água disponível para a distribuição.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Mesmo quando a água parece limpa e transparente, isso não significa necessariamente que ela esteja própria para consumo.', ans: 'V', explanation: 'Características visuais, como cor e transparência, não são suficientes para determinar a qualidade da água. São necessárias análises específicas.' },
+  { type: 'mc', q: 'Qual equipamento é utilizado para medir o volume de água fornecido a um imóvel?', opts: ['Manômetro','Hidrômetro','Dosador','Medidor pluviométrico'], ans: 1, explanation: 'O hidrômetro é o equipamento utilizado para registrar o volume de água fornecido ao imóvel.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Uma pequena quantidade de água desperdiçada diariamente pode representar um volume significativo ao longo de um ano.', ans: 'V', explanation: 'Pequenos desperdícios acumulados ao longo do tempo podem representar milhares de litros de água.' },
+  { type: 'mc', q: 'O que acontece com os resíduos retirados durante o tratamento de esgoto?', opts: ['São imediatamente devolvidos aos rios','Passam por processos específicos de tratamento e destinação','São destinados automaticamente para o lixo','São sempre incinerados'], ans: 1, explanation: 'Os resíduos gerados no tratamento precisam ser submetidos a processos adequados antes de sua destinação final.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A pressão da água na rede pode variar de acordo com características como topografia, demanda e condições operacionais do sistema.', ans: 'V', explanation: 'A pressão pode sofrer variações devido a fatores como diferenças de altitude, consumo, vazão e configuração da rede.' },
+  { type: 'mc', q: 'Qual destas atitudes ajuda diretamente a reduzir o desperdício de água em uma empresa?', opts: ['Aumentar a pressão das torneiras','Identificar e corrigir vazamentos','Manter torneiras abertas durante a limpeza','Lavar áreas externas diariamente com mangueira'], ans: 1, explanation: 'Vazamentos representam perda de água e podem elevar o consumo. A identificação rápida ajuda a reduzir desperdícios e custos.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A água utilizada em processos industriais pode exigir tratamentos específicos antes de ser devolvida ao meio ambiente.', ans: 'V', explanation: 'Dependendo de sua origem e características, o efluente industrial pode precisar de tratamento específico antes de sua destinação final.' },
+  { type: 'mc', q: 'Qual é a diferença básica entre água potável e água de reuso?', opts: ['Não existe diferença','Água potável é destinada ao consumo humano, enquanto a água de reuso pode ser utilizada em determinadas finalidades conforme seu tratamento e regulamentação','Água de reúso sempre pode ser bebida','Água potável não precisa de tratamento'], ans: 1, explanation: 'Água potável e água de reúso possuem finalidades diferentes. A água de reúso pode ser utilizada em aplicações específicas, conforme a qualidade obtida e as normas aplicáveis. Água potável é própria para o consumo humano.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A impermeabilização excessiva do solo nas cidades pode aumentar o volume e a velocidade do escoamento da água da chuva.', ans: 'V', explanation: 'Superfícies impermeáveis, como asfalto e concreto, reduzem a infiltração da água no solo e aumentam o escoamento superficial.' },
+  { type: 'mc', q: 'Qual destes materiais não deve ser descartado no vaso sanitário?', opts: ['Papel higiênico, dentro das condições previstas pelo sistema local','Água','Efluente sanitário','Lenços umedecidos e outros materiais sólidos'], ans: 3, explanation: 'Materiais sólidos inadequados podem provocar obstruções nas instalações internas e na rede de esgoto.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Vazamentos em instalações internas de um imóvel podem aumentar o consumo registrado pelo hidrômetro.', ans: 'V', explanation: 'Se o vazamento ocorrer depois do hidrômetro, a água consumida pode ser registrada pelo equipamento, mesmo sem utilização consciente pelo consumidor.' },
+  { type: 'mc', q: 'Em um sistema de abastecimento, para que serve uma estação elevatória?', opts: ['Aumentar a capacidade de tratamento químico da água','Bombear água ou esgoto para vencer diferenças de nível ou transportar o fluxo até outro ponto do sistema','Medir a qualidade da água nos imóveis','Armazenar resíduos sólidos'], ans: 1, explanation: 'As estações elevatórias utilizam equipamentos de bombeamento para transportar água ou esgoto quando a gravidade, sozinha, não é suficiente.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: O tratamento de esgoto contribui para a proteção dos rios e córregos ao reduzir a carga de poluentes lançada no ambiente.', ans: 'V', explanation: 'O tratamento reduz a quantidade de matéria orgânica e outros contaminantes presentes no esgoto antes da destinação do efluente tratado.' },
+  { type: 'mc', q: 'Qual destes fatores pode influenciar o consumo de água de uma cidade?', opts: ['Temperatura e período de estiagem','O número de escolas','A quantidade de reservatórios','Exclusivamente a extensão das redes'], ans: 0, explanation: 'Temperaturas elevadas e períodos prolongados de estiagem podem aumentar a demanda por água e influenciar os padrões de consumo.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A água utilizada nas atividades econômicas também faz parte do planejamento de segurança hídrica de uma cidade.', ans: 'V', explanation: 'O planejamento hídrico precisa considerar os diferentes usos da água, incluindo abastecimento da população e atividades econômicas.' },
+  { type: 'mc', q: 'Por que detectar vazamentos rapidamente é importante para uma empresa?', opts: ['Para melhorar a aparência das instalações','Para reduzir desperdícios, evitar danos e controlar custos','Para aumentar a pressão da rede','Para eliminar a necessidade de manutenção'], ans: 1, explanation: 'Além do desperdício de água, vazamentos podem causar danos às instalações e aumentar os custos operacionais.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Investimentos em saneamento podem gerar benefícios que vão além do abastecimento de água e do tratamento de esgoto, contribuindo para saúde pública, meio ambiente e desenvolvimento urbano.', ans: 'V', explanation: 'O saneamento tem impactos amplos, relacionados à saúde, preservação ambiental, qualidade de vida e desenvolvimento das cidades.' }
+];
+
+/* ═══════════════════════════════════════════════════
    ESTADOS E REGRAS DE NEGÓCIO
 ═══════════════════════════════════════════════════ */
 let currentScreen = 'home';
@@ -419,6 +588,14 @@ let sessionQuestions = [];
 const QTD_PERGUNTAS = 3; // Regra: 3 perguntas por participante
 const ACERTOS_MINIMOS = 2; // Regra: Mínimo 2 acertos para a Roleta
 
+// Estado do segundo quiz (Connect ACIM)
+let currentQAcim = 0;
+let scoreAcim = 0;
+let answeredAcim = false;
+let sessionQuestionsAcim = [];
+const QTD_PERGUNTAS_ACIM = 3; // Regra: 3 perguntas por participante
+const ACERTOS_MINIMOS_ACIM = 2; // Regra: Mínimo 2 acertos para ganhar o brinde principal
+
 function goTo(id) {
   const prev = document.getElementById(currentScreen);
   prev.classList.add('exit');
@@ -426,14 +603,38 @@ function goTo(id) {
 
   currentScreen = id;
   const next = document.getElementById(id);
-  
+
   if (id === 'login') {
     document.getElementById('cpfInput').value = "";
     document.getElementById('loginError').style.display = "none";
   }
 
+  if (id === 'loginAcim') {
+    document.getElementById('cpfInputAcim').value = "";
+    document.getElementById('loginErrorAcim').style.display = "none";
+  }
+
   setTimeout(() => { next.classList.add('active'); }, 50);
   if (id === 'roleta') initWheel();
+}
+
+/* ═══════════════════════════════════════════════════
+   ABAS DA HOME (RIC AMBIENTAL x CONNECT ACIM)
+═══════════════════════════════════════════════════ */
+function selectHomeTab(tab) {
+  const isRic = tab === 'ric';
+  document.getElementById('tabBtnRic').classList.toggle('active', isRic);
+  document.getElementById('tabBtnAcim').classList.toggle('active', !isRic);
+  document.getElementById('tabBtnRic').setAttribute('aria-selected', isRic);
+  document.getElementById('tabBtnAcim').setAttribute('aria-selected', !isRic);
+  document.getElementById('panelRic').classList.toggle('active', isRic);
+  document.getElementById('panelAcim').classList.toggle('active', !isRic);
+}
+
+// Usado pelas telas do Connect ACIM para voltar à Home já com a aba certa selecionada
+function goToHome(tab) {
+  goTo('home');
+  selectHomeTab(tab);
 }
 
 /* ═══════════════════════════════════════════════════
@@ -807,9 +1008,261 @@ function launchConfetti(count) {
       el.style.height = (15+Math.random()*10)+'px';
       el.style.borderRadius = Math.random()>.5 ? '50%' : '2px';
       
-      document.body.appendChild(el); 
+      document.body.appendChild(el);
       el.addEventListener('animationend', () => el.remove());
     }, i * 20); // Intervalo de 20ms para sair mais como uma "explosão" contínua
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   VALIDAÇÃO DE CPF E INÍCIO DO QUIZ – CONNECT ACIM
+   (registro independente do quiz da RIC Ambiental,
+   mesma regra de 1 tentativa por CPF por dia)
+═══════════════════════════════════════════════════ */
+function validateAndStartAcim() {
+  const rawCpf = document.getElementById('cpfInputAcim').value.replace(/\D/g, "");
+  const err = document.getElementById('loginErrorAcim');
+  err.style.display = "none";
+
+  // 1. Recupera o banco de dados atualizado (chave própria do Connect ACIM)
+  let registroGeral = JSON.parse(localStorage.getItem('connect_acim_jogadores') || "{}");
+
+  // ─── TRUQUE DE ADMIN: MOSTRAR TOTAL E BAIXAR PLANILHA ───
+  if (rawCpf === "00000000000") {
+      let totalReal = Object.values(registroGeral).reduce((acc, curr) => acc + (curr.tentativas || 0), 0);
+
+      let csvContent = "CPF;Data da Ultima Participacao;Total de Tentativas\n";
+      for (let cpf in registroGeral) {
+          let cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+          let dadosUsuario = registroGeral[cpf];
+          csvContent += `${cpfFormatado};${dadosUsuario.data || "N/A"};${dadosUsuario.tentativas || 1}\n`;
+      }
+
+      let blob = new Blob(["﻿" + csvContent], { type: 'text/csv;charset=utf-8;' });
+      let link = document.createElement("a");
+      link.setAttribute("href", URL.createObjectURL(blob));
+      link.setAttribute("download", "Relatorio_Participantes_ConnectACIM.csv");
+      link.click();
+
+      alert(`📊 ESTATÍSTICA DO ESTANDE – CONNECT ACIM\nTotal de participações contabilizadas: ${totalReal}\n\nPlanilha gerada com sucesso!`);
+      document.getElementById('cpfInputAcim').value = "";
+      return;
+  }
+
+  // Validar preenchimento
+  if (rawCpf.length !== 11) {
+      err.innerHTML = `<span style="color:#FF4B4B; font-weight:900; font-size:18px;">❌ CPF Inválido!</span><br><span style="color:#FFF; font-size:16px;">Por favor, digite o CPF completo.</span>`;
+      err.style.display = "block";
+      return;
+  }
+
+  // Regra de 1 tentativa por dia
+  const hoje = new Date().toLocaleDateString('pt-BR');
+
+  if (registroGeral[rawCpf] && registroGeral[rawCpf].data === hoje) {
+      err.innerHTML = `
+        <span style="color:#FF4B4B; font-weight:900; font-size:18px;">❌ CPF já registrado hoje!</span><br>
+        <span style="color:#FFF; font-size:16px; font-weight:600;">Você só tem 1 tentativa por dia. Volte amanhã!</span><br>
+        <button class="btn-override" onclick="autorizarExcecaoAcim('${rawCpf}')">🔑 Autorizar Exceção</button>
+      `;
+      err.style.display = "block";
+      return;
+  }
+
+  // --- LOGICA DE REGISTRO UNIFICADA ---
+  let dadosExistentes = registroGeral[rawCpf] || { tentativas: 0 };
+
+  registroGeral[rawCpf] = {
+      data: hoje,
+      tentativas: (dadosExistentes.tentativas || 0) + 1
+  };
+
+  localStorage.setItem('connect_acim_jogadores', JSON.stringify(registroGeral));
+
+  setupQuizAcim();
+}
+
+// ─── FUNÇÃO PARA LIBERAR O JOGADOR NOVAMENTE (CONNECT ACIM) ───
+function autorizarExcecaoAcim(cpfBloqueado) {
+    let senha = prompt("⚠️ Acesso Restrito\nDigite a senha para liberar uma nova tentativa:");
+
+    if (senha === "connect2026") {
+        let registroGeral = JSON.parse(localStorage.getItem('connect_acim_jogadores') || "{}");
+
+        if (registroGeral[cpfBloqueado]) {
+            registroGeral[cpfBloqueado].data = "liberado_pelo_admin";
+            localStorage.setItem('connect_acim_jogadores', JSON.stringify(registroGeral));
+        }
+
+        document.getElementById('loginErrorAcim').style.display = "none";
+        validateAndStartAcim();
+    } else if (senha !== null) {
+        alert("❌ Senha incorreta.");
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+   LÓGICA DO JOGO – CONNECT ACIM (sem roleta)
+═══════════════════════════════════════════════════ */
+function setupQuizAcim() {
+  let shuffled = [...dbQuestionsAcim].sort(() => 0.5 - Math.random());
+  sessionQuestionsAcim = shuffled.slice(0, QTD_PERGUNTAS_ACIM);
+
+  currentQAcim = 0;
+  scoreAcim = 0;
+  goTo('quizAcim');
+  renderQuestionAcim();
+}
+
+// Mantém a tela centralizada (visual original) enquanto a pergunta + explicação
+// couberem na tela; só ativa o modo "alinhado no topo + rolagem" quando o
+// conteúdo realmente não cabe, evitando que o botão "Próxima" fique
+// escondido ou sobreposto em telas menores ou com textos mais longos.
+function adjustQuizAcimLayout() {
+  const el = document.getElementById('quizAcim');
+  el.classList.remove('quiz-tall');
+  if (el.scrollHeight > el.clientHeight) {
+    el.classList.add('quiz-tall');
+  }
+}
+
+function renderQuestionAcim() {
+  const q = sessionQuestionsAcim[currentQAcim];
+  answeredAcim = false;
+
+  const quizAcimScreen = document.getElementById('quizAcim');
+  quizAcimScreen.scrollTop = 0;
+
+  document.getElementById('qBadgeAcim').textContent = `Pergunta ${currentQAcim+1} de ${QTD_PERGUNTAS_ACIM}`;
+  document.getElementById('progressFillAcim').style.width = (((currentQAcim+1)/QTD_PERGUNTAS_ACIM)*100) + '%';
+  document.getElementById('nextBtnAcim').classList.add('hidden');
+
+  const qBox = document.getElementById('questionBoxAcim');
+  qBox.style.animation = 'none'; void qBox.offsetWidth; qBox.style.animation = '';
+  qBox.textContent = q.q;
+
+  const answersBox = document.getElementById('answersBoxAcim');
+  const tfRow = document.getElementById('tfRowAcim');
+  const explanation = document.getElementById('explanationAcim');
+  explanation.classList.remove('show');
+  explanation.textContent = '';
+
+  if (q.type === 'mc') {
+    answersBox.style.display = 'block';
+    tfRow.style.display = 'none';
+    const labels = ['A','B','C','D'];
+    for (let i=0; i<4; i++) {
+      const el = document.getElementById('ans'+labels[i]+'2');
+      el.textContent = labels[i]+') '+q.opts[i];
+      el.className = 'answer-item';
+      el.style.opacity = '1';
+    }
+  } else {
+    answersBox.style.display = 'none';
+    tfRow.style.display = 'flex';
+    document.getElementById('btnVerdadeiroAcim').className = 'tf-btn verdadeiro';
+    document.getElementById('btnFalsoAcim').className = 'tf-btn falso';
+    document.getElementById('btnVerdadeiroAcim').disabled = false;
+    document.getElementById('btnFalsoAcim').disabled = false;
+  }
+
+  adjustQuizAcimLayout();
+}
+
+// Quando clica em alternativa A, B, C, D (Connect ACIM)
+function selectAnswerAcim(selectedIndex) {
+  if (answeredAcim) return;
+  answeredAcim = true;
+
+  const q = sessionQuestionsAcim[currentQAcim];
+  const labels = ['A','B','C','D'];
+
+  for (let i=0; i<4; i++) {
+    const el = document.getElementById('ans'+labels[i]+'2');
+    el.classList.add('disabled');
+
+    if (i === q.ans) {
+      el.classList.add('correct');
+    } else if (i === selectedIndex) {
+      el.classList.add('wrong');
+    } else {
+      el.style.opacity = "0.5";
+    }
+  }
+
+  const exp = document.getElementById('explanationAcim');
+
+  if (selectedIndex === q.ans) {
+    scoreAcim++;
+    launchConfetti(8);
+    exp.textContent = '✅ Isso mesmo! ' + (q.explanation || '');
+  } else {
+    exp.textContent = '❌ Resposta correta: ' + labels[q.ans] + ') ' + q.opts[q.ans] + '. ' + (q.explanation || '');
+  }
+  exp.classList.add('show');
+
+  document.getElementById('nextBtnAcim').classList.remove('hidden');
+  adjustQuizAcimLayout();
+}
+
+// Quando clica em V ou F (Connect ACIM)
+function selectTFAcim(choice) {
+  if (answeredAcim) return;
+  answeredAcim = true;
+
+  const q = sessionQuestionsAcim[currentQAcim];
+  const btnV = document.getElementById('btnVerdadeiroAcim');
+  const btnF = document.getElementById('btnFalsoAcim');
+  btnV.disabled = true; btnF.disabled = true;
+
+  const exp = document.getElementById('explanationAcim');
+
+  if (choice === q.ans) {
+    scoreAcim++;
+    if (choice === 'V') btnV.classList.add('correct-tf'); else btnF.classList.add('correct-tf');
+    launchConfetti(12);
+    exp.textContent = '✅ Isso mesmo! ' + (q.explanation || '');
+  } else {
+    if (choice === 'V') { btnV.classList.add('wrong-tf'); btnF.classList.add('correct-tf'); }
+    else { btnF.classList.add('wrong-tf'); btnV.classList.add('correct-tf'); }
+    exp.textContent = '❌ ' + (q.explanation || '');
+  }
+
+  exp.classList.add('show');
+  document.getElementById('nextBtnAcim').classList.remove('hidden');
+  adjustQuizAcimLayout();
+}
+
+function nextQAcim() {
+  if (currentQAcim < QTD_PERGUNTAS_ACIM - 1) {
+    currentQAcim++;
+    renderQuestionAcim();
+  } else {
+    finishQuizAcim();
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   FINALIZAÇÃO (SUCESSO / FALHA) – CONNECT ACIM
+   Sem roleta: o prêmio é sempre escolhido pela equipe.
+═══════════════════════════════════════════════════ */
+function finishQuizAcim() {
+  goTo('resultAcim');
+  const title = document.getElementById('resultTitleAcim');
+  const msg = document.getElementById('resultMsgAcim');
+  const action = document.getElementById('resultActionAcim');
+
+  if (scoreAcim >= ACERTOS_MINIMOS_ACIM) {
+      title.textContent = "Parabéns! 🎉";
+      title.style.color = "#76FF03";
+      msg.innerHTML = `Muito bem! Você acertou <b>${scoreAcim} de ${QTD_PERGUNTAS_ACIM}</b> perguntas.<br><br>Você garantiu um brinde especial por participar do quiz Connect ACIM! 🎁`;
+      action.innerHTML = `<button class="home-btn acim-btn" onclick="goToHome('acim')" style="font-size:20px; padding: 18px 46px;">🎁 Retirar meu brinde</button>`;
+      launchConfetti(60);
+  } else {
+      title.textContent = "Que pena... 💦";
+      title.style.color = "#FFB3B3";
+      msg.innerHTML = `Não foi dessa vez! Você acertou <b>${scoreAcim} de ${QTD_PERGUNTAS_ACIM}</b> perguntas.<br><br>Mesmo assim, sua participação já garante um brinde. Obrigado por jogar! 🎁`;
+      action.innerHTML = `<button class="home-btn acim-btn" onclick="goToHome('acim')" style="font-size:20px; padding: 18px 46px;">🎁 Retirar meu brinde</button>`;
   }
 }
 </script>
