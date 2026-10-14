@@ -996,10 +996,37 @@ function highlightQuizCard(tab) {
   if (!card) return;
   // Aguarda a transicao de tela (goTo) terminar antes de rolar/piscar o card
   setTimeout(() => {
-    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    scrollDashTo(card);
     card.classList.add('pulse');
     setTimeout(() => card.classList.remove('pulse'), 2000);
   }, 450);
+}
+
+// Rola apenas o container interno do dashboard que realmente tem overflow
+// (a coluna ".dash-main" no desktop, ou o proprio "#home" empilhado no
+// celular), sem jamais tocar na rolagem do documento/body. O app usa
+// position:fixed + overflow:hidden no body de proposito (trava de zoom e
+// scroll no celular do estande); o scrollIntoView() nativo as vezes ignora
+// isso e rola o documento mesmo assim, deixando a tela "presa" e distorcida.
+// Por isso a rolagem aqui e sempre feita manualmente, com scrollTo() no
+// container certo, nunca em window/document.
+function scrollDashTo(targetEl) {
+  if (!targetEl) return;
+  let container = targetEl.parentElement;
+  while (container && container !== document.body) {
+    const style = getComputedStyle(container);
+    const podeRolar = (style.overflowY === 'auto' || style.overflowY === 'scroll');
+    if (podeRolar && container.scrollHeight > container.clientHeight + 1) {
+      const containerRect = container.getBoundingClientRect();
+      const targetRect = targetEl.getBoundingClientRect();
+      const destino = container.scrollTop + (targetRect.top - containerRect.top) - 16;
+      container.scrollTo({ top: Math.max(0, destino), behavior: 'smooth' });
+      return;
+    }
+    container = container.parentElement;
+  }
+  // Nenhum container interno precisa rolar (o conteudo ja cabe na tela) -
+  // nao faz nada, em vez de arriscar rolar o documento/body.
 }
 
 // Navegacao do menu lateral do dashboard (Painel / Quizzes)
@@ -1012,11 +1039,9 @@ function setActiveNav(key) {
 function goDashNav(key) {
   setActiveNav(key);
   if (key === 'dashboard') {
-    const hero = document.getElementById('dashHero');
-    if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollDashTo(document.getElementById('dashHero'));
   } else if (key === 'quizzes') {
-    const section = document.getElementById('dashQuizzesSection');
-    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollDashTo(document.getElementById('dashQuizzesSection'));
   }
 }
 
