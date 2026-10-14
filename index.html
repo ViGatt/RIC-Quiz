@@ -123,10 +123,6 @@
   /* ─── HOME E RESULTADO (BASE PC) ─── */
   .home-content { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; width: 100%; height: 100%; padding: 20px; box-sizing: border-box; }
   
-  /* Logotipo na Home (PC) */
-  #home .home-logo { margin-top: 50px; margin-bottom: 30px; width: 170px; height: 170px; border: 4px solid rgba(255,255,255,0.9); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 0 0 8px rgba(255,255,255,0.15), 0 20px 60px rgba(0,0,0,0.2); animation: logoFloat 3s ease-in-out infinite; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); }
-  #home .home-logo span { font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 2px; }
-  
   /* Logotipo no Resultado (PC) */
   #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo { margin-top: 50px; margin-bottom: -10px; width: 130px; height: 130px; border: 4px solid rgba(255,255,255,0.9); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; animation: logoFloat 3s ease-in-out infinite; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); box-shadow: 0 0 0 8px rgba(255,255,255,0.15); overflow: hidden; }
   #result .home-logo img, #resultAcim .home-logo img, #resultFenasan .home-logo img { max-width: 100%; }
@@ -164,33 +160,20 @@
   @keyframes confettiFall { 0% { transform: translateX(0) rotate(0deg); opacity: 1; } 100% { transform: translateX(var(--dx)) translateY(110vh) rotate(720deg); opacity: 0; } }
 
   /* ═══════════════════════════════════════════════════
-     ABAS DA HOME (SELEÇÃO DE QUIZ) + TEMA CONNECT ACIM
+     TEMA CONNECT ACIM
   ═══════════════════════════════════════════════════ */
-  .home-tabs { display: flex; gap: 10px; margin-bottom: 26px; background: rgba(255,255,255,0.12); padding: 6px; border-radius: 50px; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.25); }
-  .home-tab { border: none; background: transparent; color: rgba(255,255,255,0.75); font-weight: 800; font-size: 15px; padding: 12px 26px; border-radius: 40px; cursor: pointer; transition: all 0.25s; letter-spacing: 0.5px; white-space: nowrap; }
-  .home-tab:hover { color: #fff; }
-  .home-tab.active { background: #fff; color: #1565A0; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
-  #tabBtnAcim.active { color: #0F9B7E; }
-  .home-tab-panel { display: none; flex-direction: column; align-items: center; }
-  .home-tab-panel.active { display: flex; animation: fadeInPanel 0.35s ease; }
-  @keyframes fadeInPanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
   .home-btn.acim-btn { background: #0F9B7E; color: #fff; }
-  .blink-prize-acim { color: #5CFFB0; text-shadow: 0 0 10px rgba(92,255,176,0.5); }
   .cpf-input-acim { border-color: #22D3A5; }
   .cpf-input-acim:focus { background: rgba(255,255,255,0.25); box-shadow: 0 0 15px rgba(34,211,165,0.4); }
   #progressFillAcim { background: #22D3A5; }
   .logo-circle.logo-acim span, .home-logo-acim span { color: #DFFFF4; }
 
   /* ─── TEMA FENASAN (âmbar, para diferenciar das outras duas abas) ─── */
-  #tabBtnFenasan.active { color: #C96A08; }
   .home-btn.fenasan-btn { background: #E8871E; color: #fff; }
-  .blink-prize-fenasan { color: #FFD08A; text-shadow: 0 0 10px rgba(255,180,67,0.5); }
   .cpf-input-fenasan { border-color: #FFB443; }
   .cpf-input-fenasan:focus { background: rgba(255,255,255,0.25); box-shadow: 0 0 15px rgba(255,180,67,0.45); }
   #progressFillFenasan { background: #FFB443; }
   .logo-circle.logo-fenasan span, .home-logo-fenasan span { color: #FFEFD9; }
-  .fenasan-badge { display: inline-block; margin-bottom: 14px; padding: 6px 18px; border-radius: 30px; font-size: 13px; font-weight: 900; letter-spacing: 1px; color: #fff; background: rgba(232,135,30,0.85); border: 1px solid rgba(255,255,255,0.45); text-transform: uppercase; }
 
   /* O quiz Connect ACIM mostra explicação também nas perguntas de múltipla
      escolha (não só nas de V/F), então o botão "Próxima" deixa de ser fixo
@@ -229,11 +212,6 @@
     /* Libera a rolagem apenas dentro das caixas principais no celular se for muito pequeno */
     .home-content { overflow-y: auto; justify-content: flex-start; padding-top: 30px; padding-bottom: 30px; }
     
-    /* Logotipos Mobile (espaço no topo para animação não cortar) */
-    #home .home-logo { width: 120px; height: 120px; margin-top: 40px !important; margin-bottom: 20px; }
-    #home .home-logo img { width: 150px !important; }
-    #home .home-logo span { font-size: 10px; margin-top: -10px !important; }
-    
     /* Resultado Mobile: Logotipo e Texto */
     #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo { width: 90px !important; height: 90px !important; margin-top: 50px !important; margin-bottom: 5px !important; }
     #result .home-logo img, #resultAcim .home-logo img, #resultFenasan .home-logo img { width: 140px !important; margin-top: 0 !important; }
@@ -251,15 +229,10 @@
     h1.main-title { font-size: 40px; margin-bottom: 5px; }
     .home-subtitle { font-size: 16px; padding: 0 10px; margin-bottom: 15px; }
     .blink-prize { font-size: 18px; margin-bottom: 25px; padding: 0 15px; width: 100%; }
-    .fenasan-badge { font-size: 11px; padding: 5px 14px; margin-bottom: 10px; }
-    
+
     /* Botões */
     .home-btns { flex-direction: column; width: 90%; max-width: 300px; }
     .home-btn { padding: 15px 30px; font-size: 16px; width: 100%; justify-content: center; }
-
-    /* Abas da Home */
-    .home-tabs { flex-wrap: wrap; justify-content: center; width: 92%; max-width: 340px; }
-    .home-tab { font-size: 12px; padding: 10px 16px; flex: 1; }
 
     /* Login */
     .cpf-input { font-size: 22px; padding: 12px 20px; }
@@ -297,11 +270,153 @@
   /* Prevenção de quebra com teclado virtual aberto no telemóvel */
   @media (max-height: 650px) {
     .home-content { padding-top: 10px; }
-    #home .home-logo, #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo, .logo-area, .quiz-title { display: none; }
+    #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo, .logo-area, .quiz-title { display: none; }
     .question-box { margin-top: 20px; padding: 15px; }
     .answers-box { padding: 10px; }
     .nav-row { bottom: 15px; }
     h1.main-title { font-size: 32px; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     DASHBOARD DA HOME (tela inicial em formato de painel)
+  ═══════════════════════════════════════════════════ */
+  .dash-shell {
+    position: absolute; inset: 14px; z-index: 10;
+    background: #F3F8FB; border-radius: 28px; overflow: hidden;
+    box-shadow: 0 24px 70px rgba(5,35,55,0.35);
+    display: grid; grid-template-columns: 220px 1fr 300px; grid-template-rows: minmax(0,1fr);
+  }
+  .dash-sidebar, .dash-main, .dash-right { min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dash-sidebar { background: #EAF3F9; border-right: 1px solid rgba(14,117,168,0.14); padding: 24px 14px; display: flex; flex-direction: column; }
+  .dash-main { padding: 24px 28px 36px; }
+  .dash-right { background: #EAF3F9; border-left: 1px solid rgba(14,117,168,0.14); padding: 24px 18px; }
+
+  .dash-brand { display: flex; align-items: center; gap: 10px; padding: 0 8px; margin-bottom: 26px; }
+  .dash-brand img { width: 42px; height: 42px; object-fit: contain; }
+  .dash-brand span { font-size: 13px; font-weight: 900; color: #0E75A8; line-height: 1.15; letter-spacing: .3px; }
+
+  .dash-nav { display: flex; flex-direction: column; gap: 6px; }
+  .dash-nav-item { display: flex; align-items: center; gap: 10px; border: none; background: transparent; text-align: left; padding: 12px 14px; border-radius: 14px; font-weight: 800; font-size: 13.5px; color: #4F7086; cursor: pointer; transition: all .2s; font-family: inherit; white-space: nowrap; }
+  .dash-nav-item:hover { background: rgba(14,117,168,0.1); color: #0E75A8; }
+  .dash-nav-item.active { background: #0E75A8; color: #fff; box-shadow: 0 6px 16px rgba(14,117,168,0.35); }
+  .dash-nav-icon { font-size: 16px; width: 18px; text-align: center; flex-shrink: 0; }
+
+  .dash-support { margin-top: auto; background: linear-gradient(145deg,#1AAAD4,#0E75A8); border-radius: 18px; padding: 16px; color: #fff; text-align: center; }
+  .dash-support p { font-size: 12px; font-weight: 700; opacity: .95; margin-bottom: 10px; }
+  .dash-support button { background: #fff; color: #0E75A8; border: none; padding: 8px 18px; border-radius: 30px; font-weight: 900; font-size: 11.5px; cursor: pointer; font-family: inherit; }
+
+  .dash-topbar { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+  .dash-search { flex: 1; min-width: 180px; position: relative; }
+  .dash-search input { width: 100%; padding: 12px 16px 12px 38px; border-radius: 30px; border: 1px solid rgba(14,117,168,0.2); background: #fff; font-family: inherit; font-size: 13.5px; color: #163A52; outline: none; }
+  .dash-search input::placeholder { color: #9FB7C7; }
+  .dash-search::before { content: '🔍'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 13px; opacity: .65; pointer-events: none; }
+  .dash-start-btn { background: #0E75A8; color: #fff; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 900; font-size: 13.5px; cursor: pointer; white-space: nowrap; box-shadow: 0 8px 20px rgba(14,117,168,0.3); transition: transform .2s; font-family: inherit; }
+  .dash-start-btn:hover { transform: translateY(-2px); }
+  .dash-user { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .dash-user-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(145deg,#1AAAD4,#0E75A8); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .dash-user-text { display: flex; flex-direction: column; line-height: 1.25; }
+  .dash-user-text b { font-size: 13px; color: #163A52; }
+  .dash-user-text small { font-size: 10.5px; color: #6C8AA0; font-weight: 700; }
+
+  .dash-hero { background: linear-gradient(135deg,#1AAAD4 0%,#0E75A8 100%); border-radius: 24px; padding: 26px; color: #fff; display: flex; gap: 22px; align-items: center; flex-wrap: wrap; margin-bottom: 26px; position: relative; overflow: hidden; }
+  .dash-hero::after { content: ''; position: absolute; inset: 0; background-image: url('Ativo 3.png'); background-size: 320px; background-position: right -50px bottom -60px; background-repeat: no-repeat; opacity: .14; pointer-events: none; }
+  .dash-hero-media { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 3px solid rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
+  .dash-hero-media img { width: 44px; height: auto; }
+  .dash-hero-body { flex: 1; min-width: 220px; position: relative; z-index: 1; }
+  .dash-hero h2 { font-size: 21px; font-weight: 900; margin-bottom: 6px; }
+  .dash-hero-intro { font-size: 13px; opacity: .95; font-weight: 600; max-width: 540px; margin-bottom: 16px; }
+
+  .dash-goal-row { display: flex; justify-content: space-between; gap: 10px; font-size: 11.5px; font-weight: 800; margin-bottom: 4px; }
+  .dash-goal-track { height: 7px; background: rgba(255,255,255,0.28); border-radius: 4px; overflow: hidden; }
+  .dash-goal-fill { height: 100%; background: #FFD700; border-radius: 4px; }
+  .dash-goal-fill.fill-alt { background: #5CFFB0; }
+  .dash-goal-caption { font-size: 10.5px; opacity: .8; font-weight: 600; margin-top: 8px; }
+
+  .dash-stats-row { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .dash-stat { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); border-radius: 14px; padding: 10px 16px; display: flex; align-items: center; gap: 10px; min-width: 150px; }
+  .dash-stat-icon { font-size: 19px; }
+  .dash-stat b { display: block; font-size: 17px; font-weight: 900; line-height: 1.1; }
+  .dash-stat small { font-size: 10px; font-weight: 700; opacity: .85; text-transform: uppercase; letter-spacing: .3px; }
+
+  .dash-section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; gap: 10px; flex-wrap: wrap; }
+  .dash-section-head h3 { font-size: 16.5px; font-weight: 900; color: #163A52; }
+  .dash-section-head span { font-size: 11.5px; font-weight: 700; color: #6C8AA0; }
+
+  .dash-quiz-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 18px; }
+  .dash-quiz-card { position: relative; border: none; border-radius: 20px; overflow: hidden; cursor: pointer; min-height: 190px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 18px; color: #fff; text-align: left; font-family: inherit; transition: transform .25s, box-shadow .25s; box-shadow: 0 10px 24px rgba(14,60,90,0.18); }
+  .dash-quiz-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(14,60,90,0.3); }
+  .dash-quiz-card::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: .2; background-repeat: no-repeat; background-position: center; background-size: cover; }
+  .dash-quiz-card.theme-ric { background: linear-gradient(150deg,#1AAAD4,#0B4A6E); }
+  .dash-quiz-card.theme-ric::before { background-image: url('Ativo 4.png'); }
+  .dash-quiz-card.theme-acim { background: linear-gradient(150deg,#22D3A5,#0B5F4C); }
+  .dash-quiz-card.theme-acim::before { background-image: url('Ativo 5.png'); }
+  .dash-quiz-card.theme-fenasan { background: linear-gradient(150deg,#F2A136,#9A4E04); }
+  .dash-quiz-card.theme-fenasan::before { background-image: url('Ativo 3.png'); }
+  .dash-quiz-duration { position: relative; z-index: 1; background: rgba(0,0,0,0.3); backdrop-filter: blur(3px); font-size: 10.5px; font-weight: 800; padding: 5px 12px; border-radius: 20px; margin-bottom: auto; }
+  .dash-quiz-icon { position: relative; z-index: 1; font-size: 32px; margin: 14px 0 8px; display: block; }
+  .dash-quiz-card h4 { position: relative; z-index: 1; font-size: 16.5px; font-weight: 900; margin-bottom: 4px; }
+  .dash-quiz-card p { position: relative; z-index: 1; font-size: 11.5px; font-weight: 600; opacity: .92; margin-bottom: 10px; line-height: 1.4; }
+  .dash-quiz-foot { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; }
+  .dash-quiz-card.is-hidden { display: none; }
+
+  @keyframes dashCardPulse { 0%, 100% { box-shadow: 0 10px 24px rgba(14,60,90,0.18); } 50% { box-shadow: 0 0 0 6px rgba(255,215,0,0.6), 0 10px 24px rgba(14,60,90,0.18); } }
+  .dash-quiz-card.pulse { animation: dashCardPulse 1s ease-in-out 2; }
+
+  .dash-widget { background: #fff; border-radius: 18px; padding: 16px 18px; margin-bottom: 16px; box-shadow: 0 6px 18px rgba(14,60,90,0.08); }
+  .dash-widget h4 { font-size: 13px; font-weight: 900; color: #163A52; margin-bottom: 10px; }
+  .dash-widget p { font-size: 12px; color: #4F7086; line-height: 1.55; margin-bottom: 10px; }
+  .dash-link { font-size: 11.5px; font-weight: 800; color: #0E75A8; text-decoration: none; }
+  .dash-link:hover { text-decoration: underline; }
+
+  .dash-badges-row { display: flex; gap: 10px; justify-content: space-between; text-align: center; }
+  .dash-badge { flex: 1; }
+  .dash-badge-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 6px; color: #fff; }
+  .dash-badge:nth-child(1) .dash-badge-icon { background: linear-gradient(145deg,#FFD86B,#E8871E); }
+  .dash-badge:nth-child(2) .dash-badge-icon { background: linear-gradient(145deg,#6FE3C4,#0F9B7E); }
+  .dash-badge:nth-child(3) .dash-badge-icon { background: linear-gradient(145deg,#9BD4F2,#0E75A8); }
+  .dash-badge span { display: block; font-size: 10px; font-weight: 800; color: #4F7086; line-height: 1.3; }
+
+  .dash-reminder-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .dash-reminder-list li { display: flex; gap: 10px; font-size: 12px; font-weight: 700; color: #30506A; align-items: flex-start; line-height: 1.4; }
+
+  .dash-dropdown { position: fixed; top: 90px; left: 24px; z-index: 300; background: #fff; border-radius: 16px; box-shadow: 0 14px 34px rgba(0,0,0,0.28); padding: 16px; width: 270px; display: none; }
+  .dash-dropdown.open { display: block; }
+  .dash-dropdown h5 { font-size: 12.5px; font-weight: 900; color: #163A52; margin-bottom: 10px; }
+  .dash-dropdown p { font-size: 12px; color: #4F7086; margin-bottom: 8px; line-height: 1.45; }
+  .dash-dropdown p:last-child { margin-bottom: 0; }
+
+  .dash-modal-overlay { position: fixed; inset: 0; background: rgba(8,28,42,0.5); z-index: 400; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .dash-modal-overlay.open { display: flex; }
+  .dash-modal { background: #fff; border-radius: 22px; padding: 26px; max-width: 420px; width: 100%; max-height: 80vh; overflow-y: auto; }
+  .dash-modal h3 { font-size: 16.5px; font-weight: 900; color: #163A52; margin-bottom: 14px; }
+  .dash-modal-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #EEF3F7; font-size: 13px; font-weight: 700; color: #30506A; }
+  .dash-modal-row:first-child { border-bottom: 2px solid #D7E8F2; margin-bottom: 4px; }
+  .dash-modal-row b { color: #0E75A8; font-size: 15px; }
+  .dash-modal-close { margin-top: 16px; width: 100%; padding: 12px; border: none; border-radius: 14px; background: #0E75A8; color: #fff; font-weight: 900; cursor: pointer; font-size: 14px; font-family: inherit; }
+
+  @media (max-width: 1000px) {
+    #home.screen { justify-content: flex-start; align-items: stretch; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .dash-shell { position: static; inset: auto; width: 100%; min-height: 100%; border-radius: 0; box-shadow: none; display: flex; flex-direction: column; }
+    .dash-sidebar, .dash-main, .dash-right { overflow: visible; }
+    .dash-sidebar { flex-direction: row; align-items: center; overflow-x: auto; border-right: none; border-bottom: 1px solid rgba(14,117,168,0.14); padding: 14px 12px; }
+    .dash-brand { margin-bottom: 0; margin-right: 12px; flex-shrink: 0; }
+    .dash-nav { flex-direction: row; }
+    .dash-support { display: none; }
+    .dash-main { padding: 18px 16px 28px; }
+    .dash-right { border-left: none; border-top: 1px solid rgba(14,117,168,0.14); display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 14px; align-content: start; }
+    .dash-right .dash-widget { margin-bottom: 0; }
+    .dash-hero { flex-direction: column; text-align: center; }
+    .dash-hero-intro { margin-left: auto; margin-right: auto; }
+    .dash-stats-row { justify-content: center; }
+    .dash-topbar { flex-direction: column; align-items: stretch; }
+    .dash-user { justify-content: center; }
+    .dash-dropdown { left: 16px; right: 16px; top: auto; bottom: 90px; width: auto; }
+  }
+
+  @media (max-width: 480px) {
+    .dash-nav-label { display: none; }
+    .dash-nav-item { padding: 10px; }
+    .dash-brand span { display: none; }
   }
 </style>
 
@@ -329,61 +444,153 @@
 <div id="app">
 
   <div class="screen active" id="home">
-    <div class="home-content">
+    <div class="dash-shell">
 
-      <div class="home-tabs" role="tablist" aria-label="Selecione o quiz">
-        <button class="home-tab active" id="tabBtnRic" role="tab" aria-selected="true" onclick="selectHomeTab('ric')">🎯 Quiz RIC Ambiental</button>
-        <button class="home-tab" id="tabBtnAcim" role="tab" aria-selected="false" onclick="selectHomeTab('acim')">💧 Quiz Connect ACIM</button>
-        <button class="home-tab" id="tabBtnFenasan" role="tab" aria-selected="false" onclick="selectHomeTab('fenasan')">🌎 Quiz FENASAN</button>
-      </div>
-
-      <!-- ── PAINEL: QUIZ RIC AMBIENTAL (com Roleta) ── -->
-      <div class="home-tab-panel active" id="panelRic">
-        <div class="home-logo" title="RIC Ambiental">
-          <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
-          <span style="margin-top: -20px;">RIC AMBIENTAL</span>
+      <!-- ═══ MENU LATERAL ═══ -->
+      <aside class="dash-sidebar">
+        <div class="dash-brand">
+          <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental">
+          <span>RIC<br>AMBIENTAL</span>
         </div>
-        <h1 class="main-title">Quiz do<br>Saneamento</h1>
-        <p class="home-subtitle">🌊 Teste seus conhecimentos sobre água e saneamento!</p>
 
-        <p class="blink-prize">✨ Participe e concorra a prêmios exclusivos! ✨</p>
-        <div class="home-btns">
-          <button class="home-btn quiz-btn" onclick="goTo('login')">🎯 Iniciar Quiz</button>
-        </div>
-      </div>
+        <nav class="dash-nav">
+          <button class="dash-nav-item active" data-nav="dashboard" onclick="goDashNav('dashboard')">
+            <span class="dash-nav-icon">📊</span><span class="dash-nav-label">Painel</span>
+          </button>
+          <button class="dash-nav-item" id="navNotifBtn" onclick="toggleNotifications(event)">
+            <span class="dash-nav-icon">🔔</span><span class="dash-nav-label">Avisos</span>
+          </button>
+          <button class="dash-nav-item" data-nav="quizzes" onclick="goDashNav('quizzes')">
+            <span class="dash-nav-icon">🧩</span><span class="dash-nav-label">Quizzes</span>
+          </button>
+          <button class="dash-nav-item" id="navHistoryBtn" onclick="openHistoryModal()">
+            <span class="dash-nav-icon">📈</span><span class="dash-nav-label">Histórico</span>
+          </button>
+        </nav>
 
-      <!-- ── PAINEL: QUIZ SANEAMENTO CONNECT ACIM (sem Roleta) ── -->
-      <div class="home-tab-panel" id="panelAcim">
-        <div class="home-logo home-logo-acim" title="Saneamento Connect ACIM">
-          <img src="Ricambiental_logo-25.png" alt="Logo Saneamento Connect ACIM" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
-          <span style="margin-top: -20px;">CONNECT ACIM</span>
+        <div class="dash-support">
+          <p>💬 Precisa de ajuda com o quiz?</p>
+          <button onclick="alert('💬 Nossa equipe está por perto! Procure um dos atendentes do estande RIC Ambiental para tirar dúvidas sobre os quizzes ou prêmios.')">Fale com a equipe</button>
         </div>
-        <h1 class="main-title">Quiz Saneamento<br>Connect ACIM</h1>
-        <p class="home-subtitle">💧 Teste seus conhecimentos sobre saneamento básico!</p>
+      </aside>
 
-        <p class="blink-prize blink-prize-acim">🎁 Participe e ganhe um brinde especial! 🎁</p>
-        <div class="home-btns">
-          <button class="home-btn acim-btn" onclick="goTo('loginAcim')">💧 Iniciar Quiz</button>
+      <!-- ═══ CONTEÚDO PRINCIPAL ═══ -->
+      <main class="dash-main">
+        <div class="dash-topbar">
+          <div class="dash-search">
+            <input type="text" placeholder="Buscar quiz... (ex: ACIM, FENASAN)" oninput="filterQuizCards(this.value)" autocomplete="off">
+          </div>
+          <button class="dash-start-btn" onclick="scrollToQuizzes()">🚀 Iniciar Quiz</button>
+          <div class="dash-user">
+            <div class="dash-user-avatar">🙂</div>
+            <div class="dash-user-text"><b>Visitante</b><small>Estande RIC Ambiental</small></div>
+          </div>
         </div>
-      </div>
 
-      <!-- ── PAINEL: QUIZ DO SANEAMENTO FENASAN (sem Roleta) ── -->
-      <div class="home-tab-panel" id="panelFenasan">
-        <div class="home-logo home-logo-fenasan" title="Quiz do Saneamento – FENASAN">
-          <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental na FENASAN" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
-          <span style="margin-top: -20px;">FENASAN</span>
-        </div>
-        <h1 class="main-title">Quiz do<br>Saneamento</h1>
-        <p class="home-subtitle">🌎 Teste seus conhecimentos sobre saneamento e meio ambiente!</p>
+        <section class="dash-hero" id="dashHero">
+          <div class="dash-hero-media">
+            <img src="drop.png" alt="Gota d'água RIC Ambiental">
+          </div>
+          <div class="dash-hero-body">
+            <h2>Bem-vindo(a) ao estande da RIC Ambiental! 👋</h2>
+            <p class="dash-hero-intro">Escolha um dos quizzes abaixo, teste o que você sabe sobre saneamento e concorra a prêmios e brindes exclusivos.</p>
 
-        <span class="fenasan-badge">FENASAN · Estande RIC Ambiental</span>
-        <p class="blink-prize blink-prize-fenasan">🎁 Participe e garanta o seu brinde! 🎁</p>
-        <div class="home-btns">
-          <button class="home-btn fenasan-btn" onclick="goTo('loginFenasan')">🌎 Iniciar Quiz</button>
+            <div class="dash-goal">
+              <div class="dash-goal-row"><span>💧 Água potável até 2033</span><b>99%</b></div>
+              <div class="dash-goal-track"><div class="dash-goal-fill" style="width:99%"></div></div>
+              <div class="dash-goal-row" style="margin-top:8px"><span>🚰 Esgoto coletado e tratado até 2033</span><b>90%</b></div>
+              <div class="dash-goal-track"><div class="dash-goal-fill fill-alt" style="width:90%"></div></div>
+              <p class="dash-goal-caption">Metas de universalização do Marco Legal do Saneamento Básico (Lei nº 14.026/2020).</p>
+            </div>
+
+            <div class="dash-stats-row">
+              <div class="dash-stat"><span class="dash-stat-icon">🧾</span><div><b id="statParticipacoes">0</b><small>Participações hoje</small></div></div>
+              <div class="dash-stat"><span class="dash-stat-icon">❓</span><div><b id="statPerguntas">0</b><small>Perguntas no banco</small></div></div>
+              <div class="dash-stat"><span class="dash-stat-icon">🎁</span><div><b id="statPremios">0</b><small>Prêmios e brindes</small></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="dash-quizzes" id="dashQuizzesSection">
+          <div class="dash-section-head">
+            <h3>Quizzes em Destaque</h3>
+            <span>3 perguntas · ~3 min cada</span>
+          </div>
+          <div class="dash-quiz-grid" id="quizCardsGrid">
+
+            <article class="dash-quiz-card theme-ric" data-quiz="ric" data-search="quiz do saneamento ric ambiental roleta premios agua esgoto" onclick="goTo('login')">
+              <span class="dash-quiz-duration">⏱ ~3 min</span>
+              <span class="dash-quiz-icon">🎯</span>
+              <h4>Quiz do Saneamento</h4>
+              <p>Teste seus conhecimentos sobre água e saneamento e concorra na Roleta de Prêmios.</p>
+              <span class="dash-quiz-foot">🎡 Com roleta de prêmios</span>
+            </article>
+
+            <article class="dash-quiz-card theme-acim" data-quiz="acim" data-search="connect acim saneamento basico brinde agua esgoto" onclick="goTo('loginAcim')">
+              <span class="dash-quiz-duration">⏱ ~3 min</span>
+              <span class="dash-quiz-icon">💧</span>
+              <h4>Connect ACIM</h4>
+              <p>Quiz sobre saneamento básico em parceria com a ACIM. Acerte 2 de 3 e garanta um brinde.</p>
+              <span class="dash-quiz-foot">🎁 Brinde garantido</span>
+            </article>
+
+            <article class="dash-quiz-card theme-fenasan" data-quiz="fenasan" data-search="fenasan saneamento feira tecnico brinde agua esgoto" onclick="goTo('loginFenasan')">
+              <span class="dash-quiz-duration">⏱ ~3 min</span>
+              <span class="dash-quiz-icon">🌎</span>
+              <h4>Quiz FENASAN</h4>
+              <p>Perguntas técnicas sobre saneamento para o público da feira. Participe e leve um brinde do estande.</p>
+              <span class="dash-quiz-foot">🏅 Edição especial</span>
+            </article>
+
+          </div>
+        </section>
+      </main>
+
+      <!-- ═══ COLUNA DIREITA ═══ -->
+      <aside class="dash-right">
+        <div class="dash-widget dash-about">
+          <h4>🌊 Sobre a RIC Ambiental</h4>
+          <p>Concessionária responsável pelo abastecimento de água e pelo esgotamento sanitário de Marília (SP) desde 2024, formada pela união da Replan Saneamento e Obras com a CTL Engenharia — quase 100 anos de experiência somada em engenharia sanitária.</p>
+          <p>Missão: levar água de qualidade a toda a população atendida e tratar adequadamente o esgoto coletado, em benefício da saúde pública e ambiental.</p>
+          <a class="dash-link" href="https://ricambiental.com.br" target="_blank" rel="noopener">ricambiental.com.br ↗</a>
         </div>
-      </div>
+
+        <div class="dash-widget dash-badges-widget">
+          <h4>🏅 Conquiste seu brinde</h4>
+          <p>Veja como funciona a pontuação de cada quiz do estande:</p>
+          <div class="dash-badges-row">
+            <div class="dash-badge"><div class="dash-badge-icon">🎯</div><span>3 de 3<br>Nota máxima</span></div>
+            <div class="dash-badge"><div class="dash-badge-icon">✅</div><span>2 de 3<br>Aprovado</span></div>
+            <div class="dash-badge"><div class="dash-badge-icon">🎁</div><span>0-1 de 3<br>Participação</span></div>
+          </div>
+        </div>
+
+        <div class="dash-widget dash-reminders-widget">
+          <h4>📋 Avisos & Lembretes</h4>
+          <ul class="dash-reminder-list">
+            <li><span class="ic">🗓️</span><span>FENASAN 2026 — estande RIC Ambiental a partir de 20/10.</span></li>
+            <li><span class="ic">💬</span><span>Dúvidas sobre os quizzes? Chame a nossa equipe no estande.</span></li>
+            <li><span class="ic">🔁</span><span>Cada CPF participa 1 vez por dia em cada quiz.</span></li>
+            <li><span class="ic">🌐</span><span>Saiba mais em ricambiental.com.br.</span></li>
+          </ul>
+        </div>
+      </aside>
 
     </div>
+  </div>
+
+  <div class="dash-modal-overlay" id="dashHistoryModalOverlay" onclick="if(event.target===this) closeHistoryModal()">
+    <div class="dash-modal">
+      <h3>📈 Participações no estande</h3>
+      <div id="dashHistoryBody"></div>
+      <button class="dash-modal-close" onclick="closeHistoryModal()">Fechar</button>
+    </div>
+  </div>
+
+  <div class="dash-dropdown" id="dashNotifDropdown">
+    <h5>🔔 Avisos</h5>
+    <p>🆕 Quiz FENASAN liberado! Teste seus conhecimentos e garanta seu brinde.</p>
+    <p>🎡 Acertou 2 de 3 no Quiz RIC Ambiental? Não esqueça de girar a roleta de prêmios!</p>
   </div>
 
   <div class="screen" id="login">
@@ -741,6 +948,10 @@ const QTD_PERGUNTAS_FENASAN = 3; // Regra: 3 perguntas por participante
 const ACERTOS_MINIMOS_FENASAN = 2; // Regra: Mínimo 2 acertos para o brinde principal
 
 function goTo(id) {
+  // Fecha quaisquer paineis flutuantes do dashboard antes de trocar de tela
+  closeNotifDropdown();
+  closeHistoryModal();
+
   const prev = document.getElementById(currentScreen);
   prev.classList.add('exit');
   setTimeout(() => { prev.classList.remove('active','exit'); }, 400);
@@ -765,32 +976,154 @@ function goTo(id) {
 
   setTimeout(() => { next.classList.add('active'); }, 50);
   if (id === 'roleta') initWheel();
+  if (id === 'home') renderDashboardStats();
 }
 
 /* ═══════════════════════════════════════════════════
-   ABAS DA HOME (RIC AMBIENTAL x CONNECT ACIM)
+   DASHBOARD DA HOME (painel, busca, nav lateral,
+   notificacoes e historico de participacoes)
 ═══════════════════════════════════════════════════ */
-const HOME_TABS = {
-  ric:     { btn: 'tabBtnRic',     panel: 'panelRic' },
-  acim:    { btn: 'tabBtnAcim',    panel: 'panelAcim' },
-  fenasan: { btn: 'tabBtnFenasan', panel: 'panelFenasan' }
-};
 
-function selectHomeTab(tab) {
-  if (!HOME_TABS[tab]) tab = 'ric';
-  for (const key in HOME_TABS) {
-    const isActive = (key === tab);
-    const btn = document.getElementById(HOME_TABS[key].btn);
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-selected', isActive);
-    document.getElementById(HOME_TABS[key].panel).classList.toggle('active', isActive);
+// Usado pelas telas do Connect ACIM e da FENASAN para voltar à
+// Home já destacando o card do quiz de onde o jogador veio.
+function goToHome(tab) {
+  goTo('home');
+  highlightQuizCard(tab);
+}
+
+function highlightQuizCard(tab) {
+  const card = document.querySelector('.dash-quiz-card[data-quiz="' + tab + '"]');
+  if (!card) return;
+  // Aguarda a transicao de tela (goTo) terminar antes de rolar/piscar o card
+  setTimeout(() => {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.add('pulse');
+    setTimeout(() => card.classList.remove('pulse'), 2000);
+  }, 450);
+}
+
+// Navegacao do menu lateral do dashboard (Painel / Quizzes)
+function setActiveNav(key) {
+  document.querySelectorAll('.dash-nav-item[data-nav]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.nav === key);
+  });
+}
+
+function goDashNav(key) {
+  setActiveNav(key);
+  if (key === 'dashboard') {
+    const hero = document.getElementById('dashHero');
+    if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else if (key === 'quizzes') {
+    const section = document.getElementById('dashQuizzesSection');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
-// Usado pelas telas do Connect ACIM para voltar à Home já com a aba certa selecionada
-function goToHome(tab) {
-  goTo('home');
-  selectHomeTab(tab);
+// Atalho usado pelo botao "Iniciar Quiz" da barra superior
+function scrollToQuizzes() {
+  goDashNav('quizzes');
+}
+
+// Busca simples entre os quizzes em destaque
+function filterQuizCards(term) {
+  term = (term || '').trim().toLowerCase();
+  document.querySelectorAll('.dash-quiz-card').forEach(card => {
+    const hay = (card.dataset.search || '').toLowerCase();
+    card.classList.toggle('is-hidden', term !== '' && !hay.includes(term));
+  });
+}
+
+// Dropdown de avisos (menu lateral "Avisos")
+function toggleNotifications(evt) {
+  if (evt) evt.stopPropagation();
+  const dd = document.getElementById('dashNotifDropdown');
+  const btn = document.getElementById('navNotifBtn');
+  if (!dd || !btn) return;
+  const willOpen = !dd.classList.contains('open');
+  dd.classList.toggle('open', willOpen);
+  btn.classList.toggle('active', willOpen);
+  if (willOpen) {
+    document.addEventListener('click', closeNotifOnOutsideClick);
+  } else {
+    document.removeEventListener('click', closeNotifOnOutsideClick);
+  }
+}
+
+function closeNotifOnOutsideClick(evt) {
+  const dd = document.getElementById('dashNotifDropdown');
+  const btn = document.getElementById('navNotifBtn');
+  if (dd && btn && !dd.contains(evt.target) && !btn.contains(evt.target)) {
+    closeNotifDropdown();
+  }
+}
+
+function closeNotifDropdown() {
+  const dd = document.getElementById('dashNotifDropdown');
+  const btn = document.getElementById('navNotifBtn');
+  if (dd) dd.classList.remove('open');
+  if (btn) btn.classList.remove('active');
+  document.removeEventListener('click', closeNotifOnOutsideClick);
+}
+
+// Modal de historico/participacoes (menu lateral "Historico")
+function openHistoryModal() {
+  computeAndRenderStats();
+  const overlay = document.getElementById('dashHistoryModalOverlay');
+  const btn = document.getElementById('navHistoryBtn');
+  if (overlay) overlay.classList.add('open');
+  if (btn) btn.classList.add('active');
+}
+
+function closeHistoryModal() {
+  const overlay = document.getElementById('dashHistoryModalOverlay');
+  const btn = document.getElementById('navHistoryBtn');
+  if (overlay) overlay.classList.remove('open');
+  if (btn) btn.classList.remove('active');
+}
+
+// Soma as participacoes registradas (sem expor nenhum CPF) de cada um
+// dos 3 quizzes do estande, para o modal de "Historico".
+function computeAndRenderStats() {
+  const registries = [
+    ['ric_saneamento_jogadores', '🎯 Quiz RIC Ambiental'],
+    ['connect_acim_jogadores', '💧 Quiz Connect ACIM'],
+    ['fenasan_jogadores', '🌎 Quiz FENASAN']
+  ];
+  let totalGeral = 0;
+  let rows = '';
+  registries.forEach(([key, label]) => {
+    const data = JSON.parse(localStorage.getItem(key) || '{}');
+    const total = Object.values(data).reduce((acc, cur) => acc + (cur.tentativas || 0), 0);
+    totalGeral += total;
+    rows += `<div class="dash-modal-row"><span>${label}</span><b>${total}</b></div>`;
+  });
+  const body = document.getElementById('dashHistoryBody');
+  if (body) {
+    body.innerHTML = `<div class="dash-modal-row"><span>🏆 Total geral de participações</span><b>${totalGeral}</b></div>` + rows;
+  }
+}
+
+// Atualiza os numeros do cartao de boas-vindas (participacoes de hoje,
+// tamanho do banco de perguntas e quantidade de premios/brindes).
+function renderDashboardStats() {
+  const hoje = new Date().toLocaleDateString('pt-BR');
+  const keys = ['ric_saneamento_jogadores', 'connect_acim_jogadores', 'fenasan_jogadores'];
+  let participantesHoje = 0;
+  keys.forEach(key => {
+    const data = JSON.parse(localStorage.getItem(key) || '{}');
+    Object.values(data).forEach(v => { if (v.data === hoje) participantesHoje++; });
+  });
+
+  const totalPerguntas = dbQuestions.length + dbQuestionsAcim.length + dbQuestionsFenasan.length;
+  const totalPremios = prizes.length + 2; // premios da roleta + brinde Connect ACIM + brinde FENASAN
+
+  const elParticipacoes = document.getElementById('statParticipacoes');
+  const elPerguntas = document.getElementById('statPerguntas');
+  const elPremios = document.getElementById('statPremios');
+  if (elParticipacoes) elParticipacoes.textContent = participantesHoje;
+  if (elPerguntas) elPerguntas.textContent = totalPerguntas + '+';
+  if (elPremios) elPremios.textContent = totalPremios + '+';
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1671,6 +2004,9 @@ function finishQuizFenasan() {
       action.innerHTML = `<button class="home-btn fenasan-btn" onclick="goToHome('fenasan')" style="font-size:20px; padding: 18px 46px;">🎁 Retirar meu brinde</button>`;
   }
 }
+
+// Primeira renderizacao dos numeros do dashboard (a home comeca ativa)
+renderDashboardStats();
 </script>
 </body>
 </html>
