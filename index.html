@@ -128,8 +128,8 @@
   #home .home-logo span { font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 2px; }
   
   /* Logotipo no Resultado (PC) */
-  #result .home-logo, #resultAcim .home-logo { margin-top: 50px; margin-bottom: -10px; width: 130px; height: 130px; border: 4px solid rgba(255,255,255,0.9); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; animation: logoFloat 3s ease-in-out infinite; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); box-shadow: 0 0 0 8px rgba(255,255,255,0.15); overflow: hidden; }
-  #result .home-logo img, #resultAcim .home-logo img { max-width: 100%; }
+  #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo { margin-top: 50px; margin-bottom: -10px; width: 130px; height: 130px; border: 4px solid rgba(255,255,255,0.9); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; animation: logoFloat 3s ease-in-out infinite; background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); box-shadow: 0 0 0 8px rgba(255,255,255,0.15); overflow: hidden; }
+  #result .home-logo img, #resultAcim .home-logo img, #resultFenasan .home-logo img { max-width: 100%; }
   
   @keyframes logoFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-30px); } }
   @keyframes logoFloatQuiz { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -182,6 +182,16 @@
   #progressFillAcim { background: #22D3A5; }
   .logo-circle.logo-acim span, .home-logo-acim span { color: #DFFFF4; }
 
+  /* ─── TEMA FENASAN (âmbar, para diferenciar das outras duas abas) ─── */
+  #tabBtnFenasan.active { color: #C96A08; }
+  .home-btn.fenasan-btn { background: #E8871E; color: #fff; }
+  .blink-prize-fenasan { color: #FFD08A; text-shadow: 0 0 10px rgba(255,180,67,0.5); }
+  .cpf-input-fenasan { border-color: #FFB443; }
+  .cpf-input-fenasan:focus { background: rgba(255,255,255,0.25); box-shadow: 0 0 15px rgba(255,180,67,0.45); }
+  #progressFillFenasan { background: #FFB443; }
+  .logo-circle.logo-fenasan span, .home-logo-fenasan span { color: #FFEFD9; }
+  .fenasan-badge { display: inline-block; margin-bottom: 14px; padding: 6px 18px; border-radius: 30px; font-size: 13px; font-weight: 900; letter-spacing: 1px; color: #fff; background: rgba(232,135,30,0.85); border: 1px solid rgba(255,255,255,0.45); text-transform: uppercase; }
+
   /* O quiz Connect ACIM mostra explicação também nas perguntas de múltipla
      escolha (não só nas de V/F), então o botão "Próxima" deixa de ser fixo
      no rodapé e passa a acompanhar o conteúdo, evitando sobreposição. */
@@ -194,10 +204,10 @@
      verticalmente (igual ao design original) enquanto o conteúdo couber;
      só muda para alinhado no topo + rolagem quando realmente não cabe
      (classe "quiz-tall", aplicada via JS depois de cada renderização). */
-  #quizAcim { overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; padding-bottom: 24px; }
-  #quizAcim.quiz-tall.screen { justify-content: flex-start; padding-top: 110px; }
+  #quizAcim, #quizFenasan { overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; padding-bottom: 24px; }
+  #quizAcim.quiz-tall.screen, #quizFenasan.quiz-tall.screen { justify-content: flex-start; padding-top: 110px; }
   .progress-bar { pointer-events: none; }
-  #quizAcim .progress-bar { z-index: -1; }
+  #quizAcim .progress-bar, #quizFenasan .progress-bar { z-index: -1; }
 
   /* ═══════════════════════════════════════════════════
      RESPONSIVIDADE (MOBILE & TABLETS) - APENAS EXCEÇÕES
@@ -210,10 +220,10 @@
       padding: 8px 16px; 
       font-size: 12px; 
     }
-    #login .home-content, #loginAcim .home-content {
+    #login .home-content, #loginAcim .home-content, #loginFenasan .home-content {
       padding-top: 80px; /* Empurra o conteúdo para baixo do botão voltar */
     }
-    #login h2, #loginAcim h2 {
+    #login h2, #loginAcim h2, #loginFenasan h2 {
       font-size: 32px !important; /* Diminui um pouco o título gigante */
     }
     /* Libera a rolagem apenas dentro das caixas principais no celular se for muito pequeno */
@@ -225,11 +235,11 @@
     #home .home-logo span { font-size: 10px; margin-top: -10px !important; }
     
     /* Resultado Mobile: Logotipo e Texto */
-    #result .home-logo, #resultAcim .home-logo { width: 90px !important; height: 90px !important; margin-top: 50px !important; margin-bottom: 5px !important; }
-    #result .home-logo img, #resultAcim .home-logo img { width: 140px !important; margin-top: 0 !important; }
-    #resultTitle, #resultTitleAcim { font-size: 38px !important; margin-bottom: 5px !important; }
-    #resultMsg, #resultMsgAcim { font-size: 16px !important; padding: 15px !important; width: 95%; margin-bottom: 15px !important; line-height: 1.4; }
-    #resultAction .home-btn, #resultActionAcim .home-btn { font-size: 16px !important; padding: 12px 25px !important; }
+    #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo { width: 90px !important; height: 90px !important; margin-top: 50px !important; margin-bottom: 5px !important; }
+    #result .home-logo img, #resultAcim .home-logo img, #resultFenasan .home-logo img { width: 140px !important; margin-top: 0 !important; }
+    #resultTitle, #resultTitleAcim, #resultTitleFenasan { font-size: 38px !important; margin-bottom: 5px !important; }
+    #resultMsg, #resultMsgAcim, #resultMsgFenasan { font-size: 16px !important; padding: 15px !important; width: 95%; margin-bottom: 15px !important; line-height: 1.4; }
+    #resultAction .home-btn, #resultActionAcim .home-btn, #resultActionFenasan .home-btn { font-size: 16px !important; padding: 12px 25px !important; }
 
     /* Logo no Canto Superior Direito (Quiz) */
     .logo-area { top: 15px; right: 15px; }
@@ -241,6 +251,7 @@
     h1.main-title { font-size: 40px; margin-bottom: 5px; }
     .home-subtitle { font-size: 16px; padding: 0 10px; margin-bottom: 15px; }
     .blink-prize { font-size: 18px; margin-bottom: 25px; padding: 0 15px; width: 100%; }
+    .fenasan-badge { font-size: 11px; padding: 5px 14px; margin-bottom: 10px; }
     
     /* Botões */
     .home-btns { flex-direction: column; width: 90%; max-width: 300px; }
@@ -261,7 +272,7 @@
     .question-box { margin-top: 60px; padding: 20px 15px; font-size: 18px; width: 92%; margin-bottom: 15px; }
     .answers-box { padding: 15px; width: 92%; }
     .answer-item { font-size: 14px; padding: 12px 15px; }
-    #quizAcim.quiz-tall { padding-top: 70px; }
+    #quizAcim.quiz-tall, #quizFenasan.quiz-tall { padding-top: 70px; }
     
     /* Verdadeiro/Falso empilhados */
     .tf-row { flex-direction: column; gap: 15px; width: 92%; }
@@ -286,7 +297,7 @@
   /* Prevenção de quebra com teclado virtual aberto no telemóvel */
   @media (max-height: 650px) {
     .home-content { padding-top: 10px; }
-    #home .home-logo, #result .home-logo, #resultAcim .home-logo, .logo-area, .quiz-title { display: none; }
+    #home .home-logo, #result .home-logo, #resultAcim .home-logo, #resultFenasan .home-logo, .logo-area, .quiz-title { display: none; }
     .question-box { margin-top: 20px; padding: 15px; }
     .answers-box { padding: 10px; }
     .nav-row { bottom: 15px; }
@@ -323,6 +334,7 @@
       <div class="home-tabs" role="tablist" aria-label="Selecione o quiz">
         <button class="home-tab active" id="tabBtnRic" role="tab" aria-selected="true" onclick="selectHomeTab('ric')">🎯 Quiz RIC Ambiental</button>
         <button class="home-tab" id="tabBtnAcim" role="tab" aria-selected="false" onclick="selectHomeTab('acim')">💧 Quiz Connect ACIM</button>
+        <button class="home-tab" id="tabBtnFenasan" role="tab" aria-selected="false" onclick="selectHomeTab('fenasan')">🌎 Quiz FENASAN</button>
       </div>
 
       <!-- ── PAINEL: QUIZ RIC AMBIENTAL (com Roleta) ── -->
@@ -352,6 +364,22 @@
         <p class="blink-prize blink-prize-acim">🎁 Participe e ganhe um brinde especial! 🎁</p>
         <div class="home-btns">
           <button class="home-btn acim-btn" onclick="goTo('loginAcim')">💧 Iniciar Quiz</button>
+        </div>
+      </div>
+
+      <!-- ── PAINEL: QUIZ DO SANEAMENTO FENASAN (sem Roleta) ── -->
+      <div class="home-tab-panel" id="panelFenasan">
+        <div class="home-logo home-logo-fenasan" title="Quiz do Saneamento – FENASAN">
+          <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental na FENASAN" style="width: 250px; height: auto; object-fit: contain; margin-top: 5px;">
+          <span style="margin-top: -20px;">FENASAN</span>
+        </div>
+        <h1 class="main-title">Quiz do<br>Saneamento</h1>
+        <p class="home-subtitle">🌎 Teste seus conhecimentos sobre saneamento e meio ambiente!</p>
+
+        <span class="fenasan-badge">FENASAN · Estande RIC Ambiental</span>
+        <p class="blink-prize blink-prize-fenasan">🎁 Participe e garanta o seu brinde! 🎁</p>
+        <div class="home-btns">
+          <button class="home-btn fenasan-btn" onclick="goTo('loginFenasan')">🌎 Iniciar Quiz</button>
         </div>
       </div>
 
@@ -511,6 +539,77 @@
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════
+       TELAS DO TERCEIRO QUIZ – SANEAMENTO FENASAN
+       (mesma mecânica do Connect ACIM: CPF, 1 tentativa por
+        dia, 3 perguntas aleatórias e SEM roleta)
+  ═══════════════════════════════════════════════════ -->
+
+  <div class="screen" id="loginFenasan">
+    <button class="back-btn" onclick="goToHome('fenasan')">← Voltar</button>
+    <div class="home-content">
+      <h2 style="color:#fff; font-size: 38px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin-bottom: 5px;">Identificação</h2>
+      <p style="color:rgba(255,255,255,0.9); font-size: 18px; text-align:center; max-width:450px; margin-bottom: 25px;">
+        Para jogar e garantir o seu brinde, digite seu CPF.<br><b>Regra: Apenas 1 tentativa por dia!</b>
+      </p>
+
+      <input type="password" id="cpfInputFenasan" class="cpf-input cpf-input-fenasan" placeholder="***.***.***-**" maxlength="14" oninput="maskCPF(this)" autocomplete="off" inputmode="numeric" pattern="[0-9]*">
+
+      <button class="home-btn fenasan-btn" onclick="validateAndStartFenasan()">Começar o Quiz →</button>
+      <div id="loginErrorFenasan" class="login-error-box"></div>
+    </div>
+  </div>
+
+  <div class="screen" id="quizFenasan">
+    <div class="q-badge" id="qBadgeFenasan">Pergunta 1 / 3</div>
+
+    <div class="logo-area">
+      <div class="logo-circle logo-fenasan">
+        <img src="Ricambiental_logo-25.png" alt="Logo RIC Ambiental" style="width: 180px; height: auto; object-fit: contain; margin-top: 5px;">
+        <span style="margin-top: -12px;">FENASAN</span>
+      </div>
+    </div>
+
+    <div class="quiz-title" id="quizTitleFenasan">Quiz do Saneamento</div>
+
+    <div class="question-box" id="questionBoxFenasan"></div>
+
+    <div class="answers-box" id="answersBoxFenasan" style="display:none">
+      <div class="answer-item" id="ansA3" onclick="selectAnswerFenasan(0)"></div>
+      <div class="answer-item" id="ansB3" onclick="selectAnswerFenasan(1)"></div>
+      <div class="answer-item" id="ansC3" onclick="selectAnswerFenasan(2)"></div>
+      <div class="answer-item" id="ansD3" onclick="selectAnswerFenasan(3)"></div>
+    </div>
+
+    <div class="tf-row" id="tfRowFenasan" style="display:none">
+      <button class="tf-btn verdadeiro" id="btnVerdadeiroFenasan" onclick="selectTFFenasan('V')">
+        <div class="tf-icon">✔</div> VERDADEIRO
+      </button>
+      <button class="tf-btn falso" id="btnFalsoFenasan" onclick="selectTFFenasan('F')">
+        <div class="tf-icon">✖</div> FALSO
+      </button>
+    </div>
+
+    <div class="explanation explanation-acim" id="explanationFenasan"></div>
+
+    <div class="nav-row nav-row-inline">
+      <button class="nav-btn hidden" id="nextBtnFenasan" onclick="nextQFenasan()">Próxima Pergunta →</button>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progressFillFenasan"></div></div>
+  </div>
+
+  <div class="screen" id="resultFenasan">
+    <div class="home-content">
+      <div class="home-logo" style="width: 130px; height: 130px; margin-bottom: -10px;">
+        <img src="Ricambiental_logo-25.png" alt="Logo" style="width: 250px; margin-top: 5px;">
+      </div>
+      <h1 class="main-title" id="resultTitleFenasan" style="font-size: 55px;">Fim de Jogo!</h1>
+      <p id="resultMsgFenasan" style="color:#fff; font-size: 24px; font-weight: 700; text-align:center; max-width: 600px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px);"></p>
+      <div id="resultActionFenasan" class="home-btns"></div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -578,6 +677,43 @@ const dbQuestionsAcim = [
 ];
 
 /* ═══════════════════════════════════════════════════
+   BANCO DE QUESTÕES – QUIZ DO SANEAMENTO FENASAN
+   (terceira aba, sem roleta – 3 perguntas sorteadas)
+═══════════════════════════════════════════════════ */
+const dbQuestionsFenasan = [
+  { type: 'tf', q: 'Verdadeiro ou falso: De acordo com o Marco Legal do Saneamento Básico, a meta de universalização para 2033 prevê o atendimento de 99% da população com água potável e de 90% com coleta e tratamento de esgoto.', ans: 'V', explanation: 'A Lei nº 14.026/2020 estabeleceu essas metas para o acesso à água potável e à coleta e ao tratamento de esgoto, com prazo de referência até 31 de dezembro de 2033, observadas as condições legais aplicáveis e as hipóteses de prorrogação previstas na legislação.' },
+  { type: 'mc', q: 'Qual instituição é responsável por estabelecer normas de referência nacionais para a regulação dos serviços de saneamento básico?', opts: ['ANA (Agência Nacional de Águas e Saneamento Básico)','IBAMA (Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis)','ANEEL (Agência Nacional de Energia Elétrica)','IBGE (Instituto Brasileiro de Geografia e Estatística)'], ans: 0, explanation: 'A ANA estabelece normas de referência para a regulação dos serviços de saneamento básico, incluindo aspectos como padrões de qualidade, eficiência e regulação tarifária. A fiscalização e a regulação direta dos prestadores permanecem a cargo das entidades reguladoras competentes.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A prestação regionalizada dos serviços de saneamento pode contribuir para a viabilidade econômico-financeira de municípios menores, por meio do compartilhamento de estruturas e do subsídio cruzado entre localidades.', ans: 'V', explanation: 'A regionalização pode favorecer ganhos de escala, compartilhamento de custos e mecanismos de subsídio cruzado, ajudando a viabilizar investimentos em localidades com menor capacidade econômica.' },
+  { type: 'mc', q: 'Qual é a principal finalidade de um plano de saneamento básico?', opts: ['Definir exclusivamente o valor das tarifas cobradas dos usuários','Estabelecer diagnóstico, objetivos, metas e ações para a prestação dos serviços de saneamento','Substituir os contratos de concessão e os instrumentos de regulação','Determinar apenas as obras que deverão ser executadas no primeiro ano'], ans: 1, explanation: 'O planejamento do saneamento orienta a expansão e a melhoria dos serviços, com diagnóstico da situação, definição de metas, programas, ações e mecanismos de acompanhamento.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Uma concessão de saneamento pode prever investimentos privados sem que isso implique, necessariamente, transferência da propriedade dos ativos públicos ao concessionário.', ans: 'V', explanation: 'Na concessão, o prestador assume obrigações contratuais de operação e investimento. A titularidade dos serviços e a propriedade dos bens públicos não são automaticamente transferidas pela concessão, devendo ser observados o contrato e a legislação aplicável.' },
+  { type: 'mc', q: 'Qual indicador é mais diretamente utilizado para avaliar a eficiência de um sistema de distribuição de água em relação às perdas físicas e aparentes?', opts: ['Índice de atendimento comercial','Índice de perdas na distribuição','Índice de tratamento de esgoto','Índice de adensamento urbano'], ans: 1, explanation: 'Esse indicador relaciona o volume de água perdido na distribuição ao volume de água disponibilizado no sistema, conforme a metodologia adotada. Para uma análise completa, deve ser avaliado em conjunto com indicadores de perdas reais e aparentes.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A substituição de hidrômetros antigos pode contribuir tanto para a redução de perdas aparentes quanto para o aumento da confiabilidade do faturamento.', ans: 'V', explanation: 'Hidrômetros desgastados podem registrar incorretamente o consumo. A substituição por equipamentos adequados à faixa de vazão utilizada ajuda a melhorar a medição e a reduzir perdas comerciais.' },
+  { type: 'mc', q: 'Em um sistema de abastecimento, qual é a principal finalidade do controle de pressão na rede de distribuição?', opts: ['Eliminar completamente a necessidade de manutenção','Manter condições adequadas de abastecimento e reduzir esforços nas tubulações e a ocorrência de vazamentos','Aumentar o consumo registrado pelos hidrômetros','Substituir a necessidade de reservação'], ans: 1, explanation: 'A gestão adequada da pressão contribui para a estabilidade operacional, reduz o estresse sobre as tubulações e pode diminuir a frequência e a vazão dos vazamentos, sem comprometer os níveis de serviço.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Em sistemas de abastecimento, o volume de água que entra na rede e o volume efetivamente faturado aos consumidores são necessariamente iguais quando não há vazamentos visíveis.', ans: 'F', explanation: 'A diferença pode envolver perdas reais, como vazamentos não visíveis, e perdas aparentes, como falhas de medição, consumos não autorizados e outras imprecisões comerciais. A ausência de vazamentos visíveis não significa ausência de perdas.' },
+  { type: 'mc', q: 'O que caracteriza o balanço hídrico de um sistema de abastecimento de água?', opts: ['O levantamento exclusivo do volume de água captado nos mananciais','A comparação entre a capacidade dos reservatórios e o consumo residencial','A contabilização dos volumes de entrada, consumo autorizado, perdas reais e perdas aparentes','A medição exclusiva do volume faturado'], ans: 2, explanation: 'O balanço hídrico organiza os volumes de água do sistema para identificar como a água disponibilizada é distribuída entre consumos autorizados, perdas reais e perdas aparentes, apoiando a definição de ações de eficiência.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A setorização de uma rede de distribuição pode facilitar o monitoramento de vazões, o controle de pressões e a identificação de perdas.', ans: 'V', explanation: 'A divisão da rede em setores operacionais permite acompanhar o comportamento hidráulico de áreas específicas, comparar volumes de entrada e consumo e direcionar investigações de vazamentos.' },
+  { type: 'mc', q: 'Qual é a principal vantagem da utilização de inversores de frequência em conjuntos motobomba, quando aplicados e dimensionados adequadamente?', opts: ['Eliminar todas as perdas de água da rede','Ajustar a rotação da bomba à demanda operacional, possibilitando economia de energia e melhor controle do sistema','Dispensar a manutenção preventiva dos equipamentos','Garantir a mesma vazão em qualquer condição hidráulica'], ans: 1, explanation: 'O controle de rotação permite adequar o funcionamento da bomba às necessidades do sistema. A economia efetiva depende das condições hidráulicas, do perfil de demanda e do dimensionamento dos equipamentos.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A turbidez da água é um parâmetro relevante no tratamento de água para abastecimento, pois partículas suspensas podem interferir na eficiência dos processos de tratamento e na desinfecção.', ans: 'V', explanation: 'A turbidez indica a presença de partículas que dispersam a luz. Seu controle é importante porque essas partículas podem dificultar a remoção de microrganismos e comprometer a eficiência da desinfecção.' },
+  { type: 'mc', q: 'Em uma estação convencional de tratamento de água, qual é a função da coagulação?', opts: ['Adicionar oxigênio para elevar a pressão da rede','Desestabilizar partículas presentes na água, favorecendo sua agregação nas etapas seguintes','Remover exclusivamente sais dissolvidos','Substituir todas as etapas de filtração e desinfecção'], ans: 1, explanation: 'A coagulação utiliza produtos químicos para desestabilizar partículas, permitindo que se agreguem durante a floculação e sejam removidas nas etapas subsequentes, como decantação e filtração.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A desinfecção da água elimina necessariamente todos os contaminantes químicos e físicos presentes nela.', ans: 'F', explanation: 'A desinfecção tem como objetivo inativar microrganismos patogênicos. Ela não substitui os processos necessários para remover partículas, metais, substâncias químicas ou outros contaminantes.' },
+  { type: 'mc', q: 'Qual é a principal diferença entre águas superficiais e águas subterrâneas em relação à captação para abastecimento?', opts: ['Águas subterrâneas estão sempre livres de contaminantes','Águas superficiais nunca precisam de tratamento','As duas fontes apresentam características distintas e podem exigir estratégias específicas de captação, tratamento e monitoramento','Águas subterrâneas não sofrem influência das atividades humanas'], ans: 2, explanation: 'A qualidade da água depende das características geológicas, ambientais e das atividades humanas na área. Ambas as fontes podem sofrer contaminação e exigem avaliação e tratamento adequados ao seu perfil.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A superexploração de aquíferos pode provocar rebaixamento do nível da água subterrânea e, em determinadas condições, comprometer a sustentabilidade da captação.', ans: 'V', explanation: 'Quando a retirada de água supera a reposição disponível por períodos prolongados, o nível do aquífero pode diminuir, elevando os custos de bombeamento e comprometendo a disponibilidade hídrica.' },
+  { type: 'mc', q: 'Em uma estação de tratamento de esgoto, o que representa a DBO (Demanda Bioquímica de Oxigênio)?', opts: ['A quantidade de água potável produzida por hora','Uma medida indireta da quantidade de oxigênio consumida por microrganismos na degradação da matéria orgânica biodegradável, sob condições de ensaio definidas','A concentração de cloro residual no efluente','A pressão necessária para transportar o esgoto até a estação'], ans: 1, explanation: 'A DBO é um parâmetro utilizado para avaliar a carga de matéria orgânica biodegradável. Em geral, sua redução ao longo do tratamento indica remoção dessa carga orgânica.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A remoção de matéria orgânica em uma estação de tratamento de esgoto é suficiente, por si só, para garantir a remoção de todos os nutrientes e microrganismos patogênicos.', ans: 'F', explanation: 'A remoção de matéria orgânica não garante, por si só, a remoção adequada de nitrogênio, fósforo ou patógenos. Esses componentes podem exigir processos complementares, conforme as características do esgoto e os requisitos de lançamento ou reuso.' },
+  { type: 'mc', q: 'Qual é a principal função do tratamento secundário de esgoto em sistemas convencionais?', opts: ['Remover principalmente matéria orgânica biodegradável por processos biológicos','Transformar diretamente o esgoto em água potável','Eliminar a necessidade de tratamento preliminar','Remover exclusivamente areia e resíduos grosseiros'], ans: 0, explanation: 'O tratamento secundário utiliza processos biológicos para reduzir a matéria orgânica presente no esgoto. O tratamento preliminar remove materiais grosseiros e areia, enquanto etapas avançadas podem ser necessárias para outros contaminantes.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A infiltração de água de chuva na rede coletora de esgoto pode aumentar a vazão afluente às estações de tratamento e sobrecarregar estruturas do sistema.', ans: 'V', explanation: 'A entrada indevida de águas pluviais pode elevar significativamente a vazão transportada, reduzir a eficiência operacional, sobrecarregar tubulações e estações elevatórias e contribuir para extravasamentos.' },
+  { type: 'mc', q: 'Em sistemas de tratamento de esgoto, qual é o principal papel do processo de lodos ativados?', opts: ['Separar exclusivamente areia e materiais grosseiros','Utilizar uma comunidade de microrganismos em suspensão para degradar matéria orgânica e, conforme a configuração, remover nutrientes','Aumentar a concentração de sólidos no esgoto bruto sem tratamento','Substituir todas as etapas de controle e monitoramento do efluente'], ans: 1, explanation: 'O processo de lodos ativados utiliza biomassa mantida em suspensão, geralmente com fornecimento controlado de oxigênio, para promover a degradação de matéria orgânica. Configurações específicas também permitem a remoção biológica de nutrientes.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: O reúso de água pode reduzir a demanda por água potável em atividades industriais e comerciais, desde que a qualidade da água seja compatível com a finalidade pretendida.', ans: 'V', explanation: 'O reúso pode substituir a água potável em aplicações como lavagem de pisos, irrigação e determinados processos industriais. A viabilidade depende da qualidade requerida, dos riscos envolvidos, das normas aplicáveis e dos custos de tratamento e distribuição.' },
+  { type: 'mc', q: 'Na avaliação econômico-financeira de projetos de saneamento, qual alternativa representa melhor uma análise de custo do ciclo de vida?', opts: ['Considerar apenas o investimento inicial de construção','Considerar somente os custos anuais de energia elétrica','Avaliar os investimentos iniciais e os custos de operação, manutenção, reposição e desativação ao longo da vida útil do ativo','Escolher sempre a alternativa de menor custo de aquisição, independentemente do desempenho'], ans: 2, explanation: 'A análise do ciclo de vida considera os custos associados ao ativo ao longo do tempo. Uma solução mais barata na implantação pode gerar despesas operacionais e de manutenção superiores, tornando-se menos vantajosa no longo prazo.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: A redução das perdas de água em um sistema de abastecimento pode postergar investimentos na expansão da produção, mas esse resultado depende das condições de demanda, capacidade instalada e localização das perdas.', ans: 'V', explanation: 'Recuperar volumes perdidos pode aumentar a disponibilidade de água para atendimento da demanda e reduzir custos operacionais. A postergação de novas estruturas depende, porém, da capacidade do sistema, da distribuição geográfica das perdas e das projeções de consumo.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Se uma estação de tratamento de esgoto apresenta alta eficiência na remoção de DBO, isso significa que o efluente tratado está livre de todos os contaminantes e pode ser lançado em qualquer corpo hídrico.', ans: 'F', explanation: 'A remoção de DBO indica redução da matéria orgânica biodegradável, mas não comprova a remoção de todos os contaminantes. O lançamento depende de outros parâmetros de qualidade e do atendimento aos requisitos ambientais aplicáveis.' },
+  { type: 'mc', q: 'Uma cidade reduziu o índice de perdas de água de 40% para 30%. Isso significa, necessariamente, que o volume absoluto de água perdido também diminuiu?', opts: ['Sim, toda redução percentual representa uma redução do volume perdido','Não necessariamente, pois o volume de água disponibilizado no sistema pode ter aumentado','Sim, desde que a população tenha permanecido estável','Não, porque o índice de perdas não tem relação com o volume de água perdido'], ans: 1, explanation: 'O índice de perdas é uma proporção. Se o volume de entrada no sistema aumentar, o volume absoluto perdido pode permanecer igual ou até crescer, mesmo com uma redução percentual. Por isso, é importante analisar os indicadores em conjunto.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Toda água subterrânea captada de um aquífero confinado está naturalmente protegida contra qualquer tipo de contaminação e dispensa tratamento antes do consumo humano.', ans: 'F', explanation: 'O confinamento geológico pode oferecer proteção contra determinadas fontes de contaminação, mas não garante ausência de contaminantes. A água precisa ser analisada e atender aos padrões de potabilidade antes de ser distribuída para consumo humano.' },
+  { type: 'mc', q: 'Uma estação de tratamento de esgoto recebe uma vazão muito maior durante períodos de chuva. Qual é a conclusão mais adequada?', opts: ['A chuva sempre melhora a eficiência do tratamento, pois dilui os poluentes','O aumento da vazão comprova que houve crescimento do consumo de água potável','Pode haver entrada indevida de águas pluviais na rede de esgoto, exigindo investigação operacional','O aumento da vazão não pode afetar o funcionamento da estação'], ans: 2, explanation: 'A infiltração de água de chuva pode elevar a vazão e sobrecarregar tubulações, elevatórias e estações de tratamento. A diluição do esgoto não significa necessariamente melhoria do tratamento.' },
+  { type: 'tf', q: 'Verdadeiro ou falso: Se uma empresa reduz seu consumo de água em 20%, ela necessariamente reduz em 20% o volume de esgoto gerado.', ans: 'F', explanation: 'A relação entre consumo de água e geração de esgoto depende do uso da água no processo, das perdas, da evaporação, da incorporação em produtos e da existência de outras fontes de abastecimento. Uma redução de 20% no consumo não implica automaticamente a mesma redução no volume de esgoto.' }
+];
+
+/* ═══════════════════════════════════════════════════
    ESTADOS E REGRAS DE NEGÓCIO
 ═══════════════════════════════════════════════════ */
 let currentScreen = 'home';
@@ -595,6 +731,14 @@ let answeredAcim = false;
 let sessionQuestionsAcim = [];
 const QTD_PERGUNTAS_ACIM = 3; // Regra: 3 perguntas por participante
 const ACERTOS_MINIMOS_ACIM = 2; // Regra: Mínimo 2 acertos para ganhar o brinde principal
+
+// Estado do terceiro quiz (FENASAN)
+let currentQFenasan = 0;
+let scoreFenasan = 0;
+let answeredFenasan = false;
+let sessionQuestionsFenasan = [];
+const QTD_PERGUNTAS_FENASAN = 3; // Regra: 3 perguntas por participante
+const ACERTOS_MINIMOS_FENASAN = 2; // Regra: Mínimo 2 acertos para o brinde principal
 
 function goTo(id) {
   const prev = document.getElementById(currentScreen);
@@ -614,6 +758,11 @@ function goTo(id) {
     document.getElementById('loginErrorAcim').style.display = "none";
   }
 
+  if (id === 'loginFenasan') {
+    document.getElementById('cpfInputFenasan').value = "";
+    document.getElementById('loginErrorFenasan').style.display = "none";
+  }
+
   setTimeout(() => { next.classList.add('active'); }, 50);
   if (id === 'roleta') initWheel();
 }
@@ -621,14 +770,21 @@ function goTo(id) {
 /* ═══════════════════════════════════════════════════
    ABAS DA HOME (RIC AMBIENTAL x CONNECT ACIM)
 ═══════════════════════════════════════════════════ */
+const HOME_TABS = {
+  ric:     { btn: 'tabBtnRic',     panel: 'panelRic' },
+  acim:    { btn: 'tabBtnAcim',    panel: 'panelAcim' },
+  fenasan: { btn: 'tabBtnFenasan', panel: 'panelFenasan' }
+};
+
 function selectHomeTab(tab) {
-  const isRic = tab === 'ric';
-  document.getElementById('tabBtnRic').classList.toggle('active', isRic);
-  document.getElementById('tabBtnAcim').classList.toggle('active', !isRic);
-  document.getElementById('tabBtnRic').setAttribute('aria-selected', isRic);
-  document.getElementById('tabBtnAcim').setAttribute('aria-selected', !isRic);
-  document.getElementById('panelRic').classList.toggle('active', isRic);
-  document.getElementById('panelAcim').classList.toggle('active', !isRic);
+  if (!HOME_TABS[tab]) tab = 'ric';
+  for (const key in HOME_TABS) {
+    const isActive = (key === tab);
+    const btn = document.getElementById(HOME_TABS[key].btn);
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive);
+    document.getElementById(HOME_TABS[key].panel).classList.toggle('active', isActive);
+  }
 }
 
 // Usado pelas telas do Connect ACIM para voltar à Home já com a aba certa selecionada
@@ -1263,6 +1419,256 @@ function finishQuizAcim() {
       title.style.color = "#FFB3B3";
       msg.innerHTML = `Não foi dessa vez! Você acertou <b>${scoreAcim} de ${QTD_PERGUNTAS_ACIM}</b> perguntas.<br><br>Mesmo assim, sua participação já garante um brinde. Obrigado por jogar! 🎁`;
       action.innerHTML = `<button class="home-btn acim-btn" onclick="goToHome('acim')" style="font-size:20px; padding: 18px 46px;">🎁 Retirar meu brinde</button>`;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   VALIDAÇÃO DE CPF E INÍCIO DO QUIZ – FENASAN
+   (registro independente dos outros quizzes,
+    mesma regra de 1 tentativa por CPF por dia)
+═══════════════════════════════════════════════════ */
+function validateAndStartFenasan() {
+  const rawCpf = document.getElementById('cpfInputFenasan').value.replace(/\D/g, "");
+  const err = document.getElementById('loginErrorFenasan');
+  err.style.display = "none";
+
+  // 1. Recupera o banco de dados atualizado (chave própria da FENASAN)
+  let registroGeral = JSON.parse(localStorage.getItem('fenasan_jogadores') || "{}");
+
+  // ─── TRUQUE DE ADMIN: MOSTRAR TOTAL E BAIXAR PLANILHA ───
+  if (rawCpf === "00000000000") {
+      let totalReal = Object.values(registroGeral).reduce((acc, curr) => acc + (curr.tentativas || 0), 0);
+
+      let csvContent = "CPF;Data da Ultima Participacao;Total de Tentativas\n";
+      for (let cpf in registroGeral) {
+          let cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+          let dadosUsuario = registroGeral[cpf];
+          csvContent += `${cpfFormatado};${dadosUsuario.data || "N/A"};${dadosUsuario.tentativas || 1}\n`;
+      }
+
+      let blob = new Blob(["\ufeff" + csvContent], { type: 'text/csv;charset=utf-8;' });
+      let link = document.createElement("a");
+      link.setAttribute("href", URL.createObjectURL(blob));
+      link.setAttribute("download", "Relatorio_Participantes_FENASAN.csv");
+      link.click();
+
+      alert(`📊 ESTATÍSTICA DO ESTANDE – FENASAN\nTotal de participações contabilizadas: ${totalReal}\n\nPlanilha gerada com sucesso!`);
+      document.getElementById('cpfInputFenasan').value = "";
+      return;
+  }
+
+  // Validar preenchimento
+  if (rawCpf.length !== 11) {
+      err.innerHTML = `<span style="color:#FF4B4B; font-weight:900; font-size:18px;">❌ CPF Inválido!</span><br><span style="color:#FFF; font-size:16px;">Por favor, digite o CPF completo.</span>`;
+      err.style.display = "block";
+      return;
+  }
+
+  // Regra de 1 tentativa por dia
+  const hoje = new Date().toLocaleDateString('pt-BR');
+
+  if (registroGeral[rawCpf] && registroGeral[rawCpf].data === hoje) {
+      err.innerHTML = `
+        <span style="color:#FF4B4B; font-weight:900; font-size:18px;">❌ CPF já registrado hoje!</span><br>
+        <span style="color:#FFF; font-size:16px; font-weight:600;">Você só tem 1 tentativa por dia. Volte amanhã!</span><br>
+        <button class="btn-override" onclick="autorizarExcecaoFenasan('${rawCpf}')">🔑 Autorizar Exceção</button>
+      `;
+      err.style.display = "block";
+      return;
+  }
+
+  // --- LOGICA DE REGISTRO UNIFICADA ---
+  let dadosExistentes = registroGeral[rawCpf] || { tentativas: 0 };
+
+  registroGeral[rawCpf] = {
+      data: hoje,
+      tentativas: (dadosExistentes.tentativas || 0) + 1
+  };
+
+  localStorage.setItem('fenasan_jogadores', JSON.stringify(registroGeral));
+
+  setupQuizFenasan();
+}
+
+// ─── FUNÇÃO PARA LIBERAR O JOGADOR NOVAMENTE (FENASAN) ───
+function autorizarExcecaoFenasan(cpfBloqueado) {
+    let senha = prompt("⚠️ Acesso Restrito\nDigite a senha para liberar uma nova tentativa:");
+
+    if (senha === "fenasan2026") {
+        let registroGeral = JSON.parse(localStorage.getItem('fenasan_jogadores') || "{}");
+
+        if (registroGeral[cpfBloqueado]) {
+            registroGeral[cpfBloqueado].data = "liberado_pelo_admin";
+            localStorage.setItem('fenasan_jogadores', JSON.stringify(registroGeral));
+        }
+
+        document.getElementById('loginErrorFenasan').style.display = "none";
+        validateAndStartFenasan();
+    } else if (senha !== null) {
+        alert("❌ Senha incorreta.");
+    }
+}
+
+/* ═══════════════════════════════════════════════════
+   LÓGICA DO JOGO – FENASAN (sem roleta)
+═══════════════════════════════════════════════════ */
+function setupQuizFenasan() {
+  let shuffled = [...dbQuestionsFenasan].sort(() => 0.5 - Math.random());
+  sessionQuestionsFenasan = shuffled.slice(0, QTD_PERGUNTAS_FENASAN);
+
+  currentQFenasan = 0;
+  scoreFenasan = 0;
+  goTo('quizFenasan');
+  renderQuestionFenasan();
+}
+
+// Mesma rede de segurança do Connect ACIM: mantém a tela centralizada
+// enquanto a pergunta + explicação couberem e só ativa o modo
+// "alinhado no topo + rolagem" quando o conteúdo realmente não cabe.
+function adjustQuizFenasanLayout() {
+  const el = document.getElementById('quizFenasan');
+  el.classList.remove('quiz-tall');
+  if (el.scrollHeight > el.clientHeight) {
+    el.classList.add('quiz-tall');
+  }
+}
+
+function renderQuestionFenasan() {
+  const q = sessionQuestionsFenasan[currentQFenasan];
+  answeredFenasan = false;
+
+  document.getElementById('quizFenasan').scrollTop = 0;
+
+  document.getElementById('qBadgeFenasan').textContent = `Pergunta ${currentQFenasan+1} de ${QTD_PERGUNTAS_FENASAN}`;
+  document.getElementById('progressFillFenasan').style.width = (((currentQFenasan+1)/QTD_PERGUNTAS_FENASAN)*100) + '%';
+  document.getElementById('nextBtnFenasan').classList.add('hidden');
+
+  const qBox = document.getElementById('questionBoxFenasan');
+  qBox.style.animation = 'none'; void qBox.offsetWidth; qBox.style.animation = '';
+  qBox.textContent = q.q;
+
+  const answersBox = document.getElementById('answersBoxFenasan');
+  const tfRow = document.getElementById('tfRowFenasan');
+  const explanation = document.getElementById('explanationFenasan');
+  explanation.classList.remove('show');
+  explanation.textContent = '';
+
+  if (q.type === 'mc') {
+    answersBox.style.display = 'block';
+    tfRow.style.display = 'none';
+    const labels = ['A','B','C','D'];
+    for (let i=0; i<4; i++) {
+      const el = document.getElementById('ans'+labels[i]+'3');
+      el.textContent = labels[i]+') '+q.opts[i];
+      el.className = 'answer-item';
+      el.style.opacity = '1';
+    }
+  } else {
+    answersBox.style.display = 'none';
+    tfRow.style.display = 'flex';
+    document.getElementById('btnVerdadeiroFenasan').className = 'tf-btn verdadeiro';
+    document.getElementById('btnFalsoFenasan').className = 'tf-btn falso';
+    document.getElementById('btnVerdadeiroFenasan').disabled = false;
+    document.getElementById('btnFalsoFenasan').disabled = false;
+  }
+
+  adjustQuizFenasanLayout();
+}
+
+// Quando clica em alternativa A, B, C, D (FENASAN)
+function selectAnswerFenasan(selectedIndex) {
+  if (answeredFenasan) return;
+  answeredFenasan = true;
+
+  const q = sessionQuestionsFenasan[currentQFenasan];
+  const labels = ['A','B','C','D'];
+
+  for (let i=0; i<4; i++) {
+    const el = document.getElementById('ans'+labels[i]+'3');
+    el.classList.add('disabled');
+
+    if (i === q.ans) {
+      el.classList.add('correct');
+    } else if (i === selectedIndex) {
+      el.classList.add('wrong');
+    } else {
+      el.style.opacity = "0.5";
+    }
+  }
+
+  const exp = document.getElementById('explanationFenasan');
+
+  if (selectedIndex === q.ans) {
+    scoreFenasan++;
+    launchConfetti(8);
+    exp.textContent = '✅ Isso mesmo! ' + (q.explanation || '');
+  } else {
+    exp.textContent = '❌ Resposta correta: ' + labels[q.ans] + ') ' + q.opts[q.ans] + '. ' + (q.explanation || '');
+  }
+  exp.classList.add('show');
+
+  document.getElementById('nextBtnFenasan').classList.remove('hidden');
+  adjustQuizFenasanLayout();
+}
+
+// Quando clica em V ou F (FENASAN)
+function selectTFFenasan(choice) {
+  if (answeredFenasan) return;
+  answeredFenasan = true;
+
+  const q = sessionQuestionsFenasan[currentQFenasan];
+  const btnV = document.getElementById('btnVerdadeiroFenasan');
+  const btnF = document.getElementById('btnFalsoFenasan');
+  btnV.disabled = true; btnF.disabled = true;
+
+  const exp = document.getElementById('explanationFenasan');
+
+  if (choice === q.ans) {
+    scoreFenasan++;
+    if (choice === 'V') btnV.classList.add('correct-tf'); else btnF.classList.add('correct-tf');
+    launchConfetti(12);
+    exp.textContent = '✅ Isso mesmo! ' + (q.explanation || '');
+  } else {
+    if (choice === 'V') { btnV.classList.add('wrong-tf'); btnF.classList.add('correct-tf'); }
+    else { btnF.classList.add('wrong-tf'); btnV.classList.add('correct-tf'); }
+    exp.textContent = '❌ ' + (q.explanation || '');
+  }
+
+  exp.classList.add('show');
+  document.getElementById('nextBtnFenasan').classList.remove('hidden');
+  adjustQuizFenasanLayout();
+}
+
+function nextQFenasan() {
+  if (currentQFenasan < QTD_PERGUNTAS_FENASAN - 1) {
+    currentQFenasan++;
+    renderQuestionFenasan();
+  } else {
+    finishQuizFenasan();
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   FINALIZAÇÃO (SUCESSO / FALHA) – FENASAN
+   Sem roleta: o brinde é sempre escolhido pela equipe.
+═══════════════════════════════════════════════════ */
+function finishQuizFenasan() {
+  goTo('resultFenasan');
+  const title = document.getElementById('resultTitleFenasan');
+  const msg = document.getElementById('resultMsgFenasan');
+  const action = document.getElementById('resultActionFenasan');
+
+  if (scoreFenasan >= ACERTOS_MINIMOS_FENASAN) {
+      title.textContent = "Parabéns! 🎉";
+      title.style.color = "#76FF03";
+      msg.innerHTML = `Muito bem! Você acertou <b>${scoreFenasan} de ${QTD_PERGUNTAS_FENASAN}</b> perguntas.<br><br>Você garantiu o seu brinde no estande da RIC Ambiental na FENASAN! 🎁`;
+      action.innerHTML = `<button class="home-btn fenasan-btn" onclick="goToHome('fenasan')" style="font-size:20px; padding: 18px 46px;">🎁 Retirar meu brinde</button>`;
+      launchConfetti(60);
+  } else {
+      title.textContent = "Que pena... 💦";
+      title.style.color = "#FFB3B3";
+      msg.innerHTML = `Não foi dessa vez! Você acertou <b>${scoreFenasan} de ${QTD_PERGUNTAS_FENASAN}</b> perguntas.<br><br>Mesmo assim, sua participação já garante um brinde. Obrigado por jogar com a RIC Ambiental! 🎁`;
+      action.innerHTML = `<button class="home-btn fenasan-btn" onclick="goToHome('fenasan')" style="font-size:20px; padding: 18px 46px;">🎁 Retirar meu brinde</button>`;
   }
 }
 </script>
