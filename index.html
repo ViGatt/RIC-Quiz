@@ -286,10 +286,41 @@
     box-shadow: 0 24px 70px rgba(5,35,55,0.35);
     display: grid; grid-template-columns: 220px 1fr 300px; grid-template-rows: minmax(0,1fr);
   }
-  .dash-sidebar, .dash-main, .dash-right { min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-  .dash-sidebar { background: #EAF3F9; border-right: 1px solid rgba(14,117,168,0.14); padding: 24px 14px; display: flex; flex-direction: column; }
+  /* Textura de fundo do painel inteiro: as mesmas ondas (Ativo 3/4/5,
+     wave.png e wave 2.png) usadas no resto do app, espalhadas e bem
+     sutis sobre o fundo branco/claro do dashboard - em vez de ficarem
+     só dentro dos cards de quiz. Fica atras de tudo (z-index 0) e as 3
+     colunas (sidebar/main/right), com z-index 1, aparecem por cima. */
+  .dash-shell::before {
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    opacity: .38;
+    background-repeat: no-repeat;
+    background-image:
+      url('Ativo 4.png'),
+      url('Ativo 5.png'),
+      url('Ativo 3.png'),
+      url('wave.png'),
+      url('wave 2.png'),
+      url('Ativo 3.png');
+    background-position:
+      -4vw -3vw,
+      103% 18%,
+      -3vw 58%,
+      112% 96%,
+      -6vw 108%,
+      38vw 6vw;
+    background-size:
+      26vw auto,
+      20vw auto,
+      13vw auto,
+      34vw auto,
+      22vw auto,
+      11vw auto;
+  }
+  .dash-sidebar, .dash-main, .dash-right { position: relative; z-index: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dash-sidebar { background: rgba(234,243,249,0.6); border-right: 1px solid rgba(14,117,168,0.14); padding: 24px 14px; display: flex; flex-direction: column; }
   .dash-main { padding: 24px 28px 36px; }
-  .dash-right { background: #EAF3F9; border-left: 1px solid rgba(14,117,168,0.14); padding: 24px 18px; }
+  .dash-right { background: rgba(234,243,249,0.6); border-left: 1px solid rgba(14,117,168,0.14); padding: 24px 18px; }
 
   .dash-brand { display: flex; align-items: center; gap: 10px; padding: 0 8px; margin-bottom: 26px; }
   .dash-brand img { width: 42px; height: 42px; object-fit: contain; }
@@ -345,13 +376,25 @@
   .dash-quiz-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 18px; }
   .dash-quiz-card { position: relative; border: none; border-radius: 20px; overflow: hidden; cursor: pointer; min-height: 190px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 18px; color: #fff; text-align: left; font-family: inherit; transition: transform .25s, box-shadow .25s; box-shadow: 0 10px 24px rgba(14,60,90,0.18); }
   .dash-quiz-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(14,60,90,0.3); }
-  .dash-quiz-card::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: .2; background-repeat: no-repeat; background-position: center; background-size: cover; }
-  .dash-quiz-card.theme-ric { background: linear-gradient(150deg,#1AAAD4,#0B4A6E); }
-  .dash-quiz-card.theme-ric::before { background-image: url('Ativo 4.png'); }
-  .dash-quiz-card.theme-acim { background: linear-gradient(150deg,#22D3A5,#0B5F4C); }
-  .dash-quiz-card.theme-acim::before { background-image: url('Ativo 5.png'); }
-  .dash-quiz-card.theme-fenasan { background: linear-gradient(150deg,#F2A136,#9A4E04); }
-  .dash-quiz-card.theme-fenasan::before { background-image: url('Ativo 3.png'); }
+  /* Camada 1: as ondas coloridas (Ativo 3/4/5) repetidas como textura,
+     um pouco mais visiveis do que antes para dar mais "corpo" ao card. */
+  .dash-quiz-card::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: .3; background-repeat: repeat; }
+  /* Camada 2: a onda grande (wave.png / wave 2.png), tingida de branco,
+     ecoando o mesmo recurso usado no fundo da tela inicial - aproxima a
+     cor do card do branco espalhado pelo resto do dashboard. */
+  .dash-quiz-card::after { content: ''; position: absolute; z-index: 0; background-repeat: no-repeat; background-size: contain; filter: brightness(0) invert(1); pointer-events: none; }
+
+  .dash-quiz-card.theme-ric { background: linear-gradient(150deg,#5CE1F2 0%,#1AAAD4 45%,#0B4A6E 100%); }
+  .dash-quiz-card.theme-ric::before { background-image: url('Ativo 4.png'); background-size: 170px 51px; background-position: -10px -8px; }
+  .dash-quiz-card.theme-ric::after { background-image: url('wave.png'); width: 70%; height: 65%; right: -12%; bottom: -16%; opacity: .22; }
+
+  .dash-quiz-card.theme-acim { background: linear-gradient(150deg,#79F2CF 0%,#22D3A5 45%,#0B5F4C 100%); }
+  .dash-quiz-card.theme-acim::before { background-image: url('Ativo 3.png'); background-size: 74px 102px; background-position: 6px -14px; }
+  .dash-quiz-card.theme-acim::after { background-image: url('wave.png'); width: 68%; height: 62%; right: -14%; bottom: -18%; opacity: .2; transform: scaleX(-1); }
+
+  .dash-quiz-card.theme-fenasan { background: linear-gradient(150deg,#FFD08A 0%,#F2A136 45%,#9A4E04 100%); }
+  .dash-quiz-card.theme-fenasan::before { background-image: url('Ativo 5.png'); background-size: 170px 51px; background-position: -10px -8px; }
+  .dash-quiz-card.theme-fenasan::after { background-image: url('wave 2.png'); width: 72%; height: 60%; right: -10%; bottom: -14%; opacity: .24; }
   .dash-quiz-duration { position: relative; z-index: 1; background: rgba(0,0,0,0.3); backdrop-filter: blur(3px); font-size: 10.5px; font-weight: 800; padding: 5px 12px; border-radius: 20px; margin-bottom: auto; }
   .dash-quiz-icon { position: relative; z-index: 1; font-size: 32px; margin: 14px 0 8px; display: block; }
   .dash-quiz-card h4 { position: relative; z-index: 1; font-size: 16.5px; font-weight: 900; margin-bottom: 4px; }
@@ -396,7 +439,7 @@
 
   @media (max-width: 1000px) {
     #home.screen { justify-content: flex-start; align-items: stretch; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-    .dash-shell { position: static; inset: auto; width: 100%; min-height: 100%; border-radius: 0; box-shadow: none; display: flex; flex-direction: column; }
+    .dash-shell { position: relative; inset: auto; width: 100%; min-height: 100%; border-radius: 0; box-shadow: none; display: flex; flex-direction: column; }
     .dash-sidebar, .dash-main, .dash-right { overflow: visible; }
     .dash-sidebar { flex-direction: row; align-items: center; overflow-x: auto; border-right: none; border-bottom: 1px solid rgba(14,117,168,0.14); padding: 14px 12px; }
     .dash-brand { margin-bottom: 0; margin-right: 12px; flex-shrink: 0; }
